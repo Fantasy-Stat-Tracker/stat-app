@@ -10,10 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_13_174324) do
+ActiveRecord::Schema.define(version: 2019_04_13_180156) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "games", force: :cascade do |t|
+    t.bigint "week_id"
+    t.integer "home_score"
+    t.integer "away_score"
+    t.integer "home_id"
+    t.integer "away_id"
+    t.integer "winner_id"
+    t.integer "loser_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["week_id"], name: "index_games_on_week_id"
+  end
 
   create_table "seasons", force: :cascade do |t|
     t.string "winner"
@@ -39,5 +52,6 @@ ActiveRecord::Schema.define(version: 2019_04_13_174324) do
     t.index ["season_id"], name: "index_weeks_on_season_id"
   end
 
+  add_foreign_key "games", "weeks"
   add_foreign_key "weeks", "seasons"
 end
