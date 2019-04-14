@@ -31,3 +31,5 @@
 yarn-debug.log*
 .yarn-integrity
 credentials.json
+token.yaml
+quickstart.rb
