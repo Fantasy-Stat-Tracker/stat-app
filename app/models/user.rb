@@ -5,7 +5,7 @@ class User < ApplicationRecord
   has_many :winning_games, class_name: 'Game', foreign_key: 'winner_id'
   has_many :losing_games, class_name: 'Game', foreign_key: 'loser_id'
   validates :email, presence: true
-  
+
   def full_name
     "#{first_name} #{last_name}"
   end
@@ -13,6 +13,7 @@ class User < ApplicationRecord
   def games
     self.home_games.to_a + self.away_games.to_a
   end
+
   def total_win_loss
     "#{self.winning_games.count} - #{self.losing_games.count}"
   end
