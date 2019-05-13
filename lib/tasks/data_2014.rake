@@ -1,5 +1,5 @@
-namespace :add_users_from_google do
-  task :create_users => :environment do
+namespace :data_2014 do
+  task :add_games => :environment do
     require 'google/apis/sheets_v4'
     require 'googleauth'
     require 'googleauth/stores/file_token_store'
@@ -37,8 +37,8 @@ namespace :add_users_from_google do
     service.client_options.application_name = APPLICATION_NAME
     service.authorization = authorize
 
-    spreadsheet_id = '11NRnbvEgkjFMNxwpc3tawV5KTPNrUNCtk5_acDDe8lM'
-    range = 'Users!A2:F15'
+    spreadsheet_id = '1kLvCUN0cH5j1bQNemUpY7uIQdZK_alYr5FIZt7fPaTU'
+    range = '2014!A2:F83'
     response = service.get_spreadsheet_values(spreadsheet_id, range)
     puts 'No data found.' if response.values.empty?
     response.values.each do |row|
