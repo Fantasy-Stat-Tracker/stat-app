@@ -41,6 +41,7 @@ namespace :data_2011 do
     range = '2011!A2:F74'
     response = service.get_spreadsheet_values(spreadsheet_id, range)
     puts 'No data found.' if response.values.empty?
+    Season.create(year: 2011) unless response.values.empty?
     response.values.each do |row|
       # Print columns A and E, which correspond to indices 0 and 4.
       # puts "name: #{row[0]}, email: #{row[3]}"
