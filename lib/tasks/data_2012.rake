@@ -41,14 +41,15 @@ namespace :data_2012 do
     range = '2012!A2:J83'
     response = service.get_spreadsheet_values(spreadsheet_id, range)
     puts 'No data found.' if response.values.empty?
-    Season.create(year: 2012) unless response.values.empty?
+    year_season = Season.create(year: 2012) unless response.values.empty?
     response.values.each do |row|
       # Print columns A and E, which correspond to indices 0 and 4.
       # puts "name: #{row[0]}, email: #{row[3]}"
       week = Week.find_or_create_by(number: row[1], season_id: year_season.id)
       home_user = User.find_by(first_name: row[3], last_name: row[4])
       away_user = User.find_by(first_name: row[6], last_name: row[7])
-      Game.create(week_id: week.id, home_score: row[8], away_score: row[9], home_id: home_user.id, away_id: away_user.id)
+      UserSeason.find_or_create_by(season_id: year_season.id, user_id: home_user.id)
+      Game.create(game_type: row[0], week_id: week.id, home_score: row[8], away_score: row[9], home_id: home_user.id, away_id: away_user.id)
     end
   end
 end

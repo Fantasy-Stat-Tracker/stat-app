@@ -49,7 +49,8 @@ namespace :data_2009 do
       week = Week.find_or_create_by(number: row[1], season_id: year_season.id)
       home_user = User.find_by(first_name: row[3], last_name: row[4])
       away_user = User.find_by(first_name: row[6], last_name: row[7])
-      Game.create(week_id: week.id, home_score: row[8], away_score: row[9], home_id: home_user.id, away_id: away_user.id)
+      UserSeason.find_or_create_by(season_id: year_season.id, user_id: home_user.id)
+      Game.create(game_type: row[0], week_id: week.id, home_score: row[8], away_score: row[9], home_id: home_user.id, away_id: away_user.id)
     end
   end
 end
