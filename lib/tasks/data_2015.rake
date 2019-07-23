@@ -38,14 +38,16 @@ namespace :data_2015 do
     service.authorization = authorize
 
     spreadsheet_id = '1kLvCUN0cH5j1bQNemUpY7uIQdZK_alYr5FIZt7fPaTU'
-    range = '2015!A2:F83'
+    range = '2015!A2:J83'
     response = service.get_spreadsheet_values(spreadsheet_id, range)
     puts 'No data found.' if response.values.empty?
     Season.create(year: 2015) unless response.values.empty?
     response.values.each do |row|
       # Print columns A and E, which correspond to indices 0 and 4.
       # puts "name: #{row[0]}, email: #{row[3]}"
-      User.create(first_name: row[1], last_name: row[2], email: row[3], password: row[4])
-    end
+      week = Week.find_or_create_by(number: row[1], season_id: year_season.id)
+      home_user = User.find_by(first_name: row[3], last_name: row[4])
+      away_user = User.find_by(first_name: row[6], last_name: row[7])
+      Game.create(week_id: week.id, home_score: row[8], away_score: row[9], home_id: home_user.id, away_id: away_user.id)    end
   end
 end

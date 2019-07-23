@@ -38,7 +38,7 @@ namespace :data_2009 do
     service.authorization = authorize
 
     spreadsheet_id = '1kLvCUN0cH5j1bQNemUpY7uIQdZK_alYr5FIZt7fPaTU'
-    range = '2009!A2:F59'
+    range = '2009!A2:J59'
     response = service.get_spreadsheet_values(spreadsheet_id, range)
     puts 'No data found.' if response.values.empty?
     year_season = Season.create(year: 2009) unless response.values.empty?

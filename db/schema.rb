@@ -42,6 +42,8 @@ ActiveRecord::Schema.define(version: 2019_04_13_180156) do
     t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
   end
 
   create_table "weeks", force: :cascade do |t|
