@@ -1,0 +1,50 @@
+<h1><%= current_user.full_name %></h1>
+
+<%= form_tag(root_path, method: "get") do %>
+  <%= select_tag(:year, options_for_select(current_user.seasons.pluck(:year), params[:year]), class: "sort-menu-item", include_blank: true) %>
+  <%= label_tag(:year) %>
+
+  <%= select_tag(:week_number, options_for_select(@available_weeks, params[:week_number]), class: "sort-menu-item", include_blank: true) %>
+  <%= label_tag(:week) %>
+
+  <%= select_tag(:opponent, options_for_select(@game_opponents, params[:opponent]), class: "sort-menu-item", include_blank: true) %>
+  <%= label_tag(:opponent) %>
+  <%= submit_tag("Filter") %>
+<% end %>
+
+<table>
+  <th>Wins</th>
+  <th>Losses</th>
+  <th>Win %</th>
+  <th>Avg Score</th>
+  <th>Avg Opponent Score</th>
+
+  <tr>
+    <td><%= @wins %></td>
+    <td><%= @losses %></td>
+    <td><%= @win_loss %></td>
+    <td><%= @avg_score %></td>
+    <td><%= @avg_opponent_score %></td>
+  </tr>
+</table>
+
+<table>
+  <th>Year</th>
+  <th>Week</th>
+  <th>H/A</th>
+  <th>My Score</th>
+  <th>Opponent Score</th>
+  <th>Opponent</th>
+  <th>Result</th>
+  <% @games.each do |game| %>
+    <tr>
+      <td><%= game.week.season.year %></td>
+      <td><%= game.week.number %></td>
+      <td><%= game.home_or_away(current_user) %></td>
+      <td><%= game.my_score(current_user) %></td>
+      <td><%= game.opponent_score(current_user) %></td>
+      <td><%= game.opponent(current_user) %>
+      <td><%= game.win_or_loss(current_user) %></td>
+    </tr>
+  <% end %>
+</table>

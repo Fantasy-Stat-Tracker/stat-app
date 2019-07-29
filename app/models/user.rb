@@ -8,6 +8,8 @@ class User < ApplicationRecord
   has_many :losing_games, class_name: 'Game', foreign_key: 'loser_id'
   validates :email, presence: true
 
+  before_create :set_full_name
+
   def full_name
     "#{first_name} #{last_name}"
   end
@@ -19,6 +21,13 @@ class User < ApplicationRecord
   def total_win_loss
     "#{self.winning_games.count} - #{self.losing_games.count}"
   end
+
+  private
+
+  def set_full_name
+    self.full_name = "#{first_name} #{last_name}"
+  end
+  
 end
 
 # == Schema Information

@@ -1,0 +1,5 @@
+<% if current_user %> 
+  <ul class="nav navbar-nav navbar-right">
+    <li><%= link_to "Logout!", logout_path, method: :delete %></li>
+  </ul>
+<% end %>
