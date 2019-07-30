@@ -9,4 +9,6 @@ Rails.application.routes.draw do
   get "/login" => 'sessions#new', as: :login_path
   post "/login" => 'sessions#create'
   delete "/logout" => 'sessions#destroy', as: :logout
+
+  match '*_missing_page', to: 'pages#not_found', via: :get
 end
