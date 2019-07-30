@@ -1,25 +1,31 @@
-<h1><%= current_user.full_name %></h1>
+<h1 class="typewriter home-header"><%= current_user.full_name %></h1>
 
 <%= form_tag(root_path, method: "get") do %>
   <%= select_tag(:year, options_for_select(current_user.seasons.pluck(:year), params[:year]), class: "sort-menu-item", include_blank: true) %>
-  <%= label_tag(:year) %>
+  <%= label_tag(:year, nil, class: "filter-label") %>
 
   <%= select_tag(:week_number, options_for_select(@available_weeks, params[:week_number]), class: "sort-menu-item", include_blank: true) %>
-  <%= label_tag(:week) %>
+  <%= label_tag(:week, nil, class: "filter-label") %>
 
-  <%= select_tag(:opponent, options_for_select(@game_opponents, params[:opponent]), class: "sort-menu-item", include_blank: true) %>
-  <%= label_tag(:opponent) %>
+  <%= select_tag(:opposing_player, options_for_select(@game_opponents.collect { | user | [user.full_name, user.id] }, params[:opposing_player]), class: "sort-menu-item", include_blank: true) %>
+  <%= label_tag(:opponent, nil, class: "filter-label") %>
+
+  <%= select_tag(:game_type, options_for_select(["Regular", "Playoffs"], params[:game_type]), class: "sort-menu-item", include_blank: true) %>
+  <%= label_tag(:game_type, nil, class: "filter-label") %>
+
   <%= submit_tag("Filter") %>
 <% end %>
 
-<table>
-  <th>Wins</th>
-  <th>Losses</th>
-  <th>Win %</th>
-  <th>Avg Score</th>
-  <th>Avg Opponent Score</th>
+<table class="table col-md-6">
+  <thead class="thead-dark typewriter">
+    <th>Wins</th>
+    <th>Losses</th>
+    <th>Win %</th>
+    <th>Avg Score</th>
+    <th>Avg Opponent Score</th>
+  </thead>
 
-  <tr>
+  <tr class="typewriter">
     <td><%= @wins %></td>
     <td><%= @losses %></td>
     <td><%= @win_loss %></td>
@@ -28,19 +34,23 @@
   </tr>
 </table>
 
-<table>
-  <th>Year</th>
-  <th>Week</th>
-  <th>H/A</th>
-  <th>My Score</th>
-  <th>Opponent Score</th>
-  <th>Opponent</th>
-  <th>Result</th>
+<table class="table col-md-9">
+  <thead class="thead-dark typewriter">
+    <th>Year</th>
+    <th>Week</th>
+    <th>H/A</th>
+    <th>Game Type</th>
+    <th>My Score</th>
+    <th>Opponent Score</th>
+    <th>Opponent</th>
+    <th>Result</th>
+  </thead>
   <% @games.each do |game| %>
-    <tr>
+    <tr class="typewriter">
       <td><%= game.week.season.year %></td>
       <td><%= game.week.number %></td>
       <td><%= game.home_or_away(current_user) %></td>
+      <td><%= game.game_type %></td>
       <td><%= game.my_score(current_user) %></td>
       <td><%= game.opponent_score(current_user) %></td>
       <td><%= game.opponent(current_user) %>

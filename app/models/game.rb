@@ -4,7 +4,10 @@ class Game < ApplicationRecord
   scope :wins, -> { where(winner_id: current_user.id) }
   scope :year, -> (year) { where year: year }
   scope :week_number, -> (week_number) { where week_number: week_number }
-  scope :opponent, -> (user) { where home_id: user }
+  scope :home_opposing_player, -> (user) { where home_id: user }
+  scope :away_opposing_player, -> (user) { where away_id: user }
+  scope :opposing_player, -> (user) { home_opposing_player(user).or(away_opposing_player(user)) }
+  scope :game_type, -> (game) { where game_type: game }
 
   before_create :set_winner, :set_loser, :set_year, :set_week
 
@@ -50,12 +53,16 @@ class Game < ApplicationRecord
     end
   end
 
-  def year
-    self.week.season.year
+  def opponent_user_object(user)
+    if user.id == home_id
+      User.find(away_id)
+    else
+      User.find(home_id)
+    end
   end
 
-  def self.poop(user)
-    binding.pry
+  def year
+    self.week.season.year
   end
 
   private

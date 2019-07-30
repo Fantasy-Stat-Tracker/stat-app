@@ -10,8 +10,12 @@
     <%= favicon_link_tag asset_path('football-24.png') %>
   </head>
 
-  <body>
+  <body style="background: #f8f9fa;">
     <%= render partial: "shared/navbar" %>
-    <%= yield %>
+    <div class="container-fluid">
+      <div class="col-md-10 offset-md-1">
+        <%= yield %>
+      </div>
+    </div>
   </body>
 </html>

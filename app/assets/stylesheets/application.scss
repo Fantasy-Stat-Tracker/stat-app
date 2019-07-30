@@ -13,3 +13,17 @@
  *= require_tree .
  *= require_self
  */
+
+ @import "bootstrap";
+
+ .container-fluid {
+   background-color: #f8f9fa;
+ }
+
+ .filter-label {
+   padding: 15px 15px 15px 0px;
+ }
+
+ .typewriter {
+  font-family: "American Typewriter";
+ }

@@ -1,5 +1,9 @@
-<% if current_user %> 
-  <ul class="nav navbar-nav navbar-right">
-    <li><%= link_to "Logout!", logout_path, method: :delete %></li>
-  </ul>
+<% if current_user %>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark typewriter">
+    <ul class="navbar-nav offset-md-1">
+      <li class="nav-item"><%= link_to "Home", root_path, class: "nav-link" %></li>
+      <li class="nav-item"><%= link_to "Record Book", recordbook_path, class: "nav-link" %></li>
+      <li class="nav-item"><%= link_to "Logout!", logout_path, method: :delete, class: "nav-link" %></li>
+    </ul>
+  </nav>
 <% end %>
