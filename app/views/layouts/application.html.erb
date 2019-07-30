@@ -1,15 +1,21 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>StatTracker</title>
+    <title>The Locker Room</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= favicon_link_tag asset_path('football-24.png') %>
   </head>
 
-  <body>
-    <%= yield %>
+  <body style="background: #f8f9fa;">
+    <%= render partial: "shared/navbar" %>
+    <div class="container-fluid">
+      <div class="col-md-10 offset-md-1">
+        <%= yield %>
+      </div>
+    </div>
   </body>
 </html>

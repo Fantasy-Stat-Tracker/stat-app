@@ -1,0 +1,12 @@
+<div class="login">
+  <h1>This league is poop and so is <%= ApplicationHelper::THE_USERS.sample %>'s <%= ApplicationHelper::THE_BURNS.sample %>!</h1>
+  <h3>Log In!</h3>
+</div>
+
+<div class="loginform">
+  <%= simple_form_for :session do |f| %>
+    <%= f.input :email %>
+    <%= f.input :password %>
+    <%= f.button :submit, "Log In!", class: "btn btn-primary" %>
+  <% end %>
+</div>
