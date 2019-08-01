@@ -10,15 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_28_155831) do
+ActiveRecord::Schema.define(version: 2019_08_01_003101) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "games", force: :cascade do |t|
     t.bigint "week_id"
-    t.integer "home_score"
-    t.integer "away_score"
+    t.float "home_score"
+    t.float "away_score"
     t.integer "home_id"
     t.integer "away_id"
     t.integer "winner_id"
