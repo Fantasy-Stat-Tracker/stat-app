@@ -1,22 +1,22 @@
 <h1 class="typewriter home-header"><%= current_user.full_name %></h1>
 
-<%= form_tag(root_path, method: "get") do %>
-  <%= select_tag(:year, options_for_select(current_user.seasons.pluck(:year), params[:year]), class: "sort-menu-item", include_blank: true) %>
+<%= form_tag(root_path, method: "get", class: "filter-bar") do %>
+  <%= select_tag(:year, options_for_select(current_user.seasons.pluck(:year).sort, params[:year]), class: "sort-menu-item", include_blank: true) %>
   <%= label_tag(:year, nil, class: "filter-label") %>
 
-  <%= select_tag(:week_number, options_for_select(@available_weeks, params[:week_number]), class: "sort-menu-item", include_blank: true) %>
+  <%= select_tag(:week_number, options_for_select(@available_weeks.sort, params[:week_number]), class: "sort-menu-item", include_blank: true) %>
   <%= label_tag(:week, nil, class: "filter-label") %>
 
-  <%= select_tag(:opposing_player, options_for_select(@game_opponents.collect { | user | [user.full_name, user.id] }, params[:opposing_player]), class: "sort-menu-item", include_blank: true) %>
+  <%= select_tag(:opposing_player, options_for_select(@game_opponents.collect { | user | [user.full_name, user.id] }.sort, params[:opposing_player]), class: "sort-menu-item", include_blank: true) %>
   <%= label_tag(:opponent, nil, class: "filter-label") %>
 
   <%= select_tag(:game_type, options_for_select(["Regular", "Playoffs"], params[:game_type]), class: "sort-menu-item", include_blank: true) %>
   <%= label_tag(:game_type, nil, class: "filter-label") %>
 
-  <%= submit_tag("Filter") %>
+  <%= submit_tag("Filter", class: "btn btn-info") %>
 <% end %>
 
-<table class="table col-md-6">
+<table class="table col-md-7 col-sm-10">
   <thead class="thead-dark typewriter">
     <th>Wins</th>
     <th>Losses</th>
@@ -34,7 +34,7 @@
   </tr>
 </table>
 
-<table class="table col-md-9">
+<table class="table col-md-10 col-sm-12">
   <thead class="thead-dark typewriter">
     <th>Year</th>
     <th>Week</th>
