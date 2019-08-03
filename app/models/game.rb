@@ -1,13 +1,25 @@
 class Game < ApplicationRecord
   belongs_to :week
   has_many :users
-  scope :wins, -> { where(winner_id: current_user.id) }
+  scope :wins, -> (user) { where(winner_id: user) }
+  scope :losses, -> (user) { where(loser_id: user) }
   scope :year, -> (year) { where year: year }
   scope :week_number, -> (week_number) { where week_number: week_number }
   scope :home_opposing_player, -> (user) { where home_id: user }
   scope :away_opposing_player, -> (user) { where away_id: user }
   scope :opposing_player, -> (user) { home_opposing_player(user).or(away_opposing_player(user)) }
   scope :game_type, -> (game) { where game_type: game }
+  # scope :win_loss, -> (values) {
+  #   binding.pry
+  #   # if outcome == "Win"
+  #   #   binding.pry
+  #   #   wins(current_user)
+  #   # elsif outcome == "Loss"
+  #   #   losses(current_user)
+  #   # else
+  #   #   all
+  #   # end
+  # }
 
   before_create :set_winner, :set_loser, :set_year, :set_week
 

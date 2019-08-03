@@ -2,8 +2,9 @@ class GamesController < ApplicationController
   before_action :require_user
 
   def user_games
-    @games_constant = Game.where(home_id: current_user.id).or(Game.where(away_id: current_user.id)).filter(params.slice(:year))
-    @games = Game.where(home_id: current_user.id).or(Game.where(away_id: current_user.id)).filter(params.slice(:year, :week_number, :opposing_player, :game_type)).order(:year, :week_number)
+    @games_constant = Game.where(home_id: current_user.id).or(Game.where(away_id: current_user.id)).filter(params.slice(:year), current_user)
+    @games = Game.where(home_id: current_user.id).or(Game.where(away_id: current_user.id)).filter(params.slice(:year, :week_number, :opposing_player, :game_type), current_user).order(:year, :week_number)
+    win_loss_filter if params[:win_loss]
     @available_weeks = weeks_builder(@games_constant)
     @game_opponents = opponent_builder(@games_constant)
     @wins = @games.where(winner_id: current_user.id).size
@@ -14,6 +15,16 @@ class GamesController < ApplicationController
   end
 
   private
+
+  def win_loss_filter
+    if params[:win_loss] == "Win"
+      @games = @games.where(winner_id: params[:viewed_user])
+    elsif params[:win_loss] == "Loss"
+      @games = @games.where(loser_id: params[:viewed_user])
+    else
+      @games
+    end
+  end
 
   def weeks_builder(games)
     weeks = []

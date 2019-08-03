@@ -13,6 +13,11 @@
   <%= select_tag(:game_type, options_for_select(["Regular", "Playoffs"], params[:game_type]), class: "sort-menu-item", include_blank: true) %>
   <%= label_tag(:game_type, nil, class: "filter-label") %>
 
+  <%= select_tag(:win_loss, options_for_select(["Win", "Loss"], params[:win_loss]), class: "sort-menu-item", include_blank: true) %>
+  <%= label_tag(:win_loss, nil, class: "filter-label") %>
+
+  <%= hidden_field_tag(:viewed_user, current_user.id) %>
+
   <%= submit_tag("Filter", class: "btn btn-info") %>
 <% end %>
 
