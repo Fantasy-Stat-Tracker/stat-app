@@ -1,0 +1,12 @@
+<table class="table col-md-10 col-sm-12">
+  <thead class="thead-dark typewriter">
+    <th>Year</th>
+    <th>Champion</th>
+  </thead>
+  <% @seasons.each do |season| %>
+    <tr class="typewriter">
+      <td><%= season.year %></td>
+      <td><%= season.find_winner(season) %></td>
+    </tr>
+  <% end %>
+</table>

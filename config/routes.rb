@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   root 'games#user_games'
 
   get "/recordbook" => 'recordbook#index'
+  get "/seasons" => 'seasons#index'
 
   get "/login" => 'sessions#new', as: :login_path
   post "/login" => 'sessions#create'
