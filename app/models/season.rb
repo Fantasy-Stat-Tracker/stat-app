@@ -5,7 +5,7 @@ class Season < ApplicationRecord
     has_many :users, through: :user_seasons
 
     def find_winner(season)
-        user = season.user_seasons.find_by(is_winner:true).user_id
-        User.find(user).full_name
+        user = season.user_seasons.find_by(is_winner:true)&.user_id
+        User.find(user).full_name if user
     end
 end
