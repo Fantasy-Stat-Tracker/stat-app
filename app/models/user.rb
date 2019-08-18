@@ -22,6 +22,10 @@ class User < ApplicationRecord
     "#{self.winning_games.count} - #{self.losing_games.count}"
   end
 
+  def win_percentage
+    self.winning_games.count / (self.winning_games.count + self.losing_games.count).to_f
+  end
+
   private
 
   def set_full_name

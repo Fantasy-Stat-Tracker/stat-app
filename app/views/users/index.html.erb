@@ -1,0 +1,12 @@
+<table class="table col-md-10 col-sm-12">
+  <thead class="thead-dark typewriter">
+    <th>Name</th>
+    <th>Win Pct</th>
+  </thead>
+  <% @users.each do |user| %>
+    <tr class="typewriter">
+      <td><%= link_to(user.full_name, user_path(user.id)) %></td>
+      <td><%= user.win_percentage.round(4) %></td>
+    </tr>
+  <% end %>
+</table>
