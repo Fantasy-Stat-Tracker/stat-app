@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_03_164918) do
+ActiveRecord::Schema.define(version: 2019_08_25_192004) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 2019_08_03_164918) do
     t.string "game_type"
     t.integer "year"
     t.integer "week_number"
+    t.string "era", default: "new"
     t.index ["week_id"], name: "index_games_on_week_id"
   end
 
