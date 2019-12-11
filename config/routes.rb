@@ -5,6 +5,9 @@ Rails.application.routes.draw do
   root 'games#user_games'
 
   get "/recordbook" => 'recordbook#index'
+  get "/recordbook/espn" => 'recordbook#espn'
+  get "/recordbook/fleaflicker" => 'recordbook#fleaflicker'
+
   get "/seasons" => 'seasons#index'
 
   get "/login" => 'sessions#new', as: :login_path

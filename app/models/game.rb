@@ -24,7 +24,7 @@ class Game < ApplicationRecord
   # }
 
   before_create :set_winner, :set_loser, :set_year, :set_week
-  after_save :create_total_score
+  before_save :create_total_score
 
   include Filterable
 

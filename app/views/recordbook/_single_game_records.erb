@@ -1,0 +1,93 @@
+<div class="typewriter">
+  <h3>Highest Single Game Score</h3>
+</div>
+<table class="table col-md-10 col-sm-12">
+  <thead class="thead-dark typewriter">
+    <th>Score</th>
+    <th>Player</th>
+    <th>Year</th>
+    <th>Week</th>
+  </thead>
+  <% @single_game_high.each do |game| %>
+    <tr class="typewriter">
+      <td><%= game[0] %></td>
+      <td><%= User.find(game[1]).full_name%>
+      <td><%= game[2] %></td>
+      <td><%= game[3] %></td>
+    </tr>
+  <% end %>
+</table>
+<div class="typewriter">
+  <h3>Lowest Single Game Score</h3>
+</div>
+<table class="table col-md-10 col-sm-12">
+  <thead class="thead-dark typewriter">
+    <th>Score</th>
+    <th>Player</th>
+    <th>Year</th>
+    <th>Week</th>
+  </thead>
+  <% @single_game_low.each do |game| %>
+    <tr class="typewriter">
+      <td><%= game[0] %></td>
+      <td><%= User.find(game[1]).full_name%>
+      <td><%= game[2] %></td>
+      <td><%= game[3] %></td>
+    </tr>
+  <% end %>
+</table>
+<div class="typewriter">
+  <h3>Highest Combined Scores</h3>
+</div>
+<table class="table col-md-10 col-sm-12">
+  <thead class="thead-dark typewriter">
+    <th>Total Score</th>
+    <th>Year</th>
+    <th>Week</th>
+    <th>Game Type</th>
+    <th>Home</th>
+    <th>Home Score</th>
+    <th>Away</th>
+    <th>Away Score</th>
+  </thead>
+  <% @game_highscore.each do |game| %>
+    <tr class="typewriter">
+      <td><%= game.total_score %></td>
+      <td><%= game.year %></td>
+      <td><%= game.week.number %></td>
+      <td><%= game.game_type %></td>
+      <td><%= User.find(game.home_id).full_name %></td>
+      <td><%= game.home_score %></td>
+      <td><%= User.find(game.away_id).full_name %>
+      <td><%= game.away_score %></td>
+    </tr>
+  <% end %>
+</table>
+
+<div class="typewriter">
+  <h3>Lowest Combined Scores</h3>
+</div>
+<table class="table col-md-10 col-sm-12">
+  <thead class="thead-dark typewriter">
+    <th>Total Score</th>
+    <th>Year</th>
+    <th>Week</th>
+    <th>Game Type</th>
+    <th>Home</th>
+    <th>Home Score</th>
+    <th>Away</th>
+    <th>Away Score</th>
+  </thead>
+  <% @game_lowscore.each do |game| %>
+    <tr class="typewriter">
+      <td><%= game.total_score %></td>
+      <td><%= game.year %></td>
+      <td><%= game.week.number %></td>
+      <td><%= game.game_type %></td>
+      <td><%= User.find(game.home_id).full_name %></td>
+      <td><%= game.home_score %></td>
+      <td><%= User.find(game.away_id).full_name %>
+      <td><%= game.away_score %></td>
+    </tr>
+  <% end %>
+</table>

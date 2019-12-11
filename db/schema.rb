@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 2019_08_25_201852) do
     t.string "game_type"
     t.integer "year"
     t.integer "week_number"
-    t.string "era", default: "new"
+    t.string "era", default: "espn"
     t.float "total_score"
     t.index ["week_id"], name: "index_games_on_week_id"
   end
