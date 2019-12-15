@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_25_201852) do
+ActiveRecord::Schema.define(version: 2019_12_11_223017) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,6 +44,19 @@ ActiveRecord::Schema.define(version: 2019_08_25_201852) do
     t.bigint "user_id"
     t.bigint "season_id"
     t.boolean "is_winner"
+    t.float "points"
+    t.float "regular_season_points"
+    t.float "playoff_points"
+    t.integer "wins"
+    t.integer "losses"
+    t.integer "regular_season_wins"
+    t.integer "regular_season_losses"
+    t.integer "playoff_losses"
+    t.integer "playoff_wins"
+    t.integer "close_games"
+    t.integer "close_wins"
+    t.integer "close_losses"
+    t.float "win_percentage"
     t.index ["season_id"], name: "index_user_seasons_on_season_id"
     t.index ["user_id"], name: "index_user_seasons_on_user_id"
   end

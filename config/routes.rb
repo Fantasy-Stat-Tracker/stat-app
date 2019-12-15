@@ -4,9 +4,15 @@ Rails.application.routes.draw do
 
   root 'games#user_games'
 
-  get "/recordbook" => 'recordbook#index'
-  get "/recordbook/espn" => 'recordbook#espn'
-  get "/recordbook/fleaflicker" => 'recordbook#fleaflicker'
+  get "/recordbook/game" => 'recordbook#game_index'
+  get "/recordbook/game/espn" => 'recordbook#game_espn'
+  get "/recordbook/game/fleaflicker" => 'recordbook#game_fleaflicker'
+  get "/recordbook/season" => 'recordbook#season_index'
+  get "/recordbook/season/espn" => 'recordbook#season_espn'
+  get "/recordbook/season/fleaflicker" => 'recordbook#season_fleaflicker'
+  get "/recordbook/all_time" => 'recordbook#all_time_index'
+  get "/recordbook/all_time/espn" => 'recordbook#all_time_espn'
+  get "/recordbook/all_time/fleaflicker" => 'recordbook#all_time_fleaflicker'
 
   get "/seasons" => 'seasons#index'
 

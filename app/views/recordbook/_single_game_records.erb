@@ -1,41 +1,47 @@
-<div class="typewriter">
-  <h3>Highest Single Game Score</h3>
-</div>
-<table class="table col-md-10 col-sm-12">
-  <thead class="thead-dark typewriter">
-    <th>Score</th>
-    <th>Player</th>
-    <th>Year</th>
-    <th>Week</th>
-  </thead>
-  <% @single_game_high.each do |game| %>
-    <tr class="typewriter">
-      <td><%= game[0] %></td>
-      <td><%= User.find(game[1]).full_name%>
-      <td><%= game[2] %></td>
-      <td><%= game[3] %></td>
-    </tr>
-  <% end %>
-</table>
-<div class="typewriter">
-  <h3>Lowest Single Game Score</h3>
-</div>
-<table class="table col-md-10 col-sm-12">
-  <thead class="thead-dark typewriter">
-    <th>Score</th>
-    <th>Player</th>
-    <th>Year</th>
-    <th>Week</th>
-  </thead>
-  <% @single_game_low.each do |game| %>
-    <tr class="typewriter">
-      <td><%= game[0] %></td>
-      <td><%= User.find(game[1]).full_name%>
-      <td><%= game[2] %></td>
-      <td><%= game[3] %></td>
-    </tr>
-  <% end %>
-</table>
+<div class="small-record-tables">  
+  <div class="small-record-table-left">
+    <div class="typewriter">
+      <h3>Highest Single Game Score</h3>
+    </div>
+    <table class="table col-md-10 col-sm-12 small-record-table">
+      <thead class="thead-dark typewriter">
+        <th>Score</th>
+        <th>Player</th>
+        <th>Year</th>
+        <th>Week</th>
+      </thead>
+      <% @single_game_high.each do |game| %>
+        <tr class="typewriter">
+          <td><%= game[0] %></td>
+          <td><%= User.find(game[1]).full_name%>
+          <td><%= game[2] %></td>
+          <td><%= game[3] %></td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+  <div class="small-record-table-right">
+    <div class="typewriter">
+      <h3>Lowest Single Game Score</h3>
+    </div>
+    <table class="table col-md-10 col-sm-12">
+      <thead class="thead-dark typewriter">
+        <th>Score</th>
+        <th>Player</th>
+        <th>Year</th>
+        <th>Week</th>
+      </thead>
+      <% @single_game_low.each do |game| %>
+        <tr class="typewriter">
+          <td><%= game[0] %></td>
+          <td><%= User.find(game[1]).full_name%>
+          <td><%= game[2] %></td>
+          <td><%= game[3] %></td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+</div>  
 <div class="typewriter">
   <h3>Highest Combined Scores</h3>
 </div>
