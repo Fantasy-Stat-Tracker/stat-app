@@ -24,7 +24,7 @@ class Game < ApplicationRecord
   # }
 
   before_create :set_winner, :set_loser, :set_year, :set_week
-  before_save :create_total_score
+  before_save :create_total_score, :close?
 
   include Filterable
 
@@ -106,5 +106,15 @@ class Game < ApplicationRecord
     home = self.home_score
     away = self.away_score
     self.total_score = home + away
+  end
+
+  def close?
+    home = self.home_score
+    away = self.away_score
+    if (home - away).abs <= 3
+      self.close = true
+    else
+      self.close = false
+    end
   end
 end
