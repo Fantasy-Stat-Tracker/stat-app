@@ -6,8 +6,16 @@
     <div class="collapse navbar-collapse" id="statAppNav">
       <ul class="navbar-nav mr-auto mt-2 mt-lg-0 offset-md-1">
         <li class="nav-item"><%= link_to "Home", root_path, class: "nav-link" %></li>
+        <li class="nav-item"><%= link_to "Players", users_path, class: "nav-link" %></li>
         <li class="nav-item"><%= link_to "Seasons", seasons_path, class: "nav-link" %></li>
-        <li class="nav-item"><%= link_to "Record Book", recordbook_path, class: "nav-link" %></li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Recordbook</a>
+          <div class="dropdown-menu">
+            <a><%= link_to "Single Game", recordbook_game_path, class: "dropdown-item" %></a>
+            <a><%= link_to "Season", recordbook_season_path, class: "dropdown-item" %></a>
+            <a><%= link_to "All Time", recordbook_all_time_path, class: "dropdown-item" %></a>
+          </div>
+        </li>
         <li class="nav-item"><%= link_to "Logout!", logout_path, method: :delete, class: "nav-link" %></li>
       </ul>
     </div>

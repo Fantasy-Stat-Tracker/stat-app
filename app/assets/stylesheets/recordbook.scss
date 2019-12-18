@@ -1,3 +1,25 @@
 // Place all the styles related to the recordbook controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.small-record-tables {
+  overflow: hidden;
+}
+
+.small-record-table-left {
+  float: left;
+  width: 50%;
+}
+
+.small-record-table-right {
+  float: right;
+  width: 50%;
+}
+
+.recordbook-nav {
+  margin: 20px 0px;
+}
+
+.era-nav {
+  margin-right: 15px; 
+}

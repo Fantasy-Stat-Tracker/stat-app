@@ -1,0 +1,79 @@
+<div class="typewriter">
+  <h3>Wins</h3>
+</div>
+<table class="table col-md-10 col-sm-12">
+  <thead class="thead-dark typewriter">
+    <th>Wins</th>
+    <th>Player</th>
+  </thead>
+  <% @wins.each do |value| %>
+    <tr class="typewriter">
+      <td><%= value[1] %></td>
+      <td><%= User.find(value[0]).full_name %></td>
+    </tr>
+  <% end %>
+</table>
+
+<div class="typewriter">
+  <h3>Losses</h3>
+</div>
+<table class="table col-md-10 col-sm-12">
+  <thead class="thead-dark typewriter">
+    <th>Losses</th>
+    <th>Player</th>
+  </thead>
+  <% @losses.each do |value| %>
+    <tr class="typewriter">
+      <td><%= value[1] %></td>
+      <td><%= User.find(value[0]).full_name %></td>
+    </tr>
+  <% end %>
+</table>
+
+<div class="typewriter">
+  <h3>Points</h3>
+</div>
+<table class="table col-md-10 col-sm-12">
+  <thead class="thead-dark typewriter">
+    <th>Points</th>
+    <th>Player</th>
+  </thead>
+  <% @points.each do |value| %>
+    <tr class="typewriter">
+      <td><%= value[1] %></td>
+      <td><%= User.find(value[0]).full_name %></td>
+    </tr>
+  <% end %>
+</table>
+
+<div class="typewriter">
+  <h3>Playoff Wins</h3>
+</div>
+<table class="table col-md-10 col-sm-12">
+  <thead class="thead-dark typewriter">
+    <th>Wins</th>
+    <th>Player</th>
+  </thead>
+  <% @playoff_wins.each do |value| %>
+    <tr class="typewriter">
+      <td><%= value[1] %></td>
+      <td><%= User.find(value[0]).full_name %></td>
+    </tr>
+  <% end %>
+</table>
+
+<div class="typewriter">
+  <h3>Playoff Losses</h3>
+</div>
+<table class="table col-md-10 col-sm-12">
+  <thead class="thead-dark typewriter">
+    <th>Losses</th>
+    <th>Player</th>
+  </thead>
+  <% @playoff_losses.each do |value| %>
+    <tr class="typewriter">
+      <td><%= value[1] %></td>
+      <td><%= User.find(value[0]).full_name %></td>
+    </tr>
+  <% end %>
+</table>

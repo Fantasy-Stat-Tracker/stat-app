@@ -9,6 +9,8 @@ class Game < ApplicationRecord
   scope :away_opposing_player, -> (user) { where away_id: user }
   scope :opposing_player, -> (user) { home_opposing_player(user).or(away_opposing_player(user)) }
   scope :game_type, -> (game) { where game_type: game }
+  scope :pre_merger, -> (game) { where era: "old" }
+  scope :post_merger, -> (game) {where era: "new" }
   # scope :win_loss, -> (values) {
   #   binding.pry
   #   # if outcome == "Win"
@@ -22,6 +24,7 @@ class Game < ApplicationRecord
   # }
 
   before_create :set_winner, :set_loser, :set_year, :set_week
+  before_save :create_total_score, :close?
 
   include Filterable
 
@@ -97,5 +100,21 @@ class Game < ApplicationRecord
 
   def set_week
     self.week_number = self.week.number
+  end
+
+  def create_total_score
+    home = self.home_score
+    away = self.away_score
+    self.total_score = home + away
+  end
+
+  def close?
+    home = self.home_score
+    away = self.away_score
+    if (home - away).abs <= 3
+      self.close = true
+    else
+      self.close = false
+    end
   end
 end
