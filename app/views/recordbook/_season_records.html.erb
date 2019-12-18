@@ -1,0 +1,197 @@
+<div class="typewriter">
+  <h3>Points</h3>
+</div>
+<table class="table col-md-10 col-sm-12">
+  <thead class="thead-dark typewriter">
+    <th>Points</th>
+    <th>Year</th>
+    <th>Player</th>
+  </thead>
+  <% @most_points.each do |season| %>
+    <tr class="typewriter">
+      <td><%= season.points %></td>
+      <td><%= season.year %></td>
+      <td><%= season.user.full_name %></td>
+    </tr>
+  <% end %>
+</table>
+
+<div class="typewriter">
+  <h3>Least Points</h3>
+</div>
+<table class="table col-md-10 col-sm-12">
+  <thead class="thead-dark typewriter">
+    <th>Points</th>
+    <th>Year</th>
+    <th>Player</th>
+  </thead>
+  <% @least_points.each do |season| %>
+    <tr class="typewriter">
+      <td><%= season.points %></td>
+      <td><%= season.year %></td>
+      <td><%= season.user.full_name %></td>
+    </tr>
+  <% end %>
+</table>
+
+<div class="typewriter">
+  <h3>Points Per Game</h3>
+</div>
+<table class="table col-md-10 col-sm-12">
+  <thead class="thead-dark typewriter">
+    <th>Points</th>
+    <th>Year</th>
+    <th>Player</th>
+  </thead>
+  <% @most_ppg.each do |season| %>
+    <tr class="typewriter">
+      <td><%= season.points_per_game.round(2) %></td>
+      <td><%= season.year %></td>
+      <td><%= season.user.full_name %></td>
+    </tr>
+  <% end %>
+</table>
+
+<div class="typewriter">
+  <h3>Regular Season Points</h3>
+</div>
+<table class="table col-md-10 col-sm-12">
+  <thead class="thead-dark typewriter">
+    <th>Points</th>
+    <th>Year</th>
+    <th>Player</th>
+  </thead>
+  <% @most_regular_season_points.each do |season| %>
+    <tr class="typewriter">
+      <td><%= season.regular_season_points %></td>
+      <td><%= season.year %></td>
+      <td><%= season.user.full_name %></td>
+    </tr>
+  <% end %>
+</table>
+
+<div class="typewriter">
+  <h3>Playoff Points</h3>
+</div>
+<table class="table col-md-10 col-sm-12">
+  <thead class="thead-dark typewriter">
+    <th>Points</th>
+    <th>Year</th>
+    <th>Player</th>
+  </thead>
+  <% @most_playoff_points.each do |season| %>
+    <tr class="typewriter">
+      <td><%= season.playoff_points %></td>
+      <td><%= season.year %></td>
+      <td><%= season.user.full_name %></td>
+    </tr>
+  <% end %>
+</table>
+
+<div class="typewriter">
+  <h3>Wins</h3>
+</div>
+<table class="table col-md-10 col-sm-12">
+  <thead class="thead-dark typewriter">
+    <th>Wins</th>
+    <th>Year</th>
+    <th>Player</th>
+  </thead>
+  <% @most_wins.each do |season| %>
+    <tr class="typewriter">
+      <td><%= season.wins %></td>
+      <td><%= season.year %></td>
+      <td><%= season.user.full_name %></td>
+    </tr>
+  <% end %>
+</table>
+
+<div class="typewriter">
+  <h3>Losses</h3>
+</div>
+<table class="table col-md-10 col-sm-12">
+  <thead class="thead-dark typewriter">
+    <th>Losses</th>
+    <th>Year</th>
+    <th>Player</th>
+  </thead>
+  <% @most_losses.each do |season| %>
+    <tr class="typewriter">
+      <td><%= season.losses %></td>
+      <td><%= season.year %></td>
+      <td><%= season.user.full_name %></td>
+    </tr>
+  <% end %>
+</table>
+
+<div class="typewriter">
+  <h3>Win %</h3>
+</div>
+<table class="table col-md-10 col-sm-12">
+  <thead class="thead-dark typewriter">
+    <th>Percent</th>
+    <th>Year</th>
+    <th>Player</th>
+  </thead>
+  <% @win_percentage.each do |season| %>
+    <tr class="typewriter">
+      <td><%= season.win_percentage.round(4) %></td>
+      <td><%= season.year %></td>
+      <td><%= season.user.full_name %></td>
+    </tr>
+  <% end %>
+</table>
+
+<div class="typewriter">
+  <h3>Close Games (Decided by 3 or fewer points)</h3>
+</div>
+<table class="table col-md-10 col-sm-12">
+  <thead class="thead-dark typewriter">
+    <th>Games</th>
+    <th>Year</th>
+    <th>Player</th>
+  </thead>
+  <% @close_games.each do |season| %>
+    <tr class="typewriter">
+      <td><%= season.close_games %></td>
+      <td><%= season.year %></td>
+      <td><%= season.user.full_name %></td>
+    </tr>
+  <% end %>
+</table>
+
+<div class="typewriter">
+  <h3>Close Wins</h3>
+</div>
+<table class="table col-md-10 col-sm-12">
+  <thead class="thead-dark typewriter">
+    <th>Wins</th>
+    <th>Year</th>
+    <th>Player</th>
+  </thead>
+  <% @close_wins.each do |season| %>
+    <tr class="typewriter">
+      <td><%= season.close_wins %></td>
+      <td><%= season.year %></td>
+      <td><%= season.user.full_name %></td>
+    </tr>
+  <% end %>
+</table>
+
+<div class="typewriter">
+  <h3>Close Losses</h3>
+</div>
+<table class="table col-md-10 col-sm-12">
+  <thead class="thead-dark typewriter">
+    <th>Losses</th>
+    <th>Year</th>
+    <th>Player</th>
+  </thead>
+  <% @close_losses.each do |season| %>
+    <tr class="typewriter">
+      <td><%= season.close_losses %></td>
+      <td><%= season.year %></td>
+      <td><%= season.user.full_name %></td>
+    </tr>
+  <% end %>
+</table>

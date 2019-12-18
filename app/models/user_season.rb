@@ -8,6 +8,7 @@ class UserSeason < ApplicationRecord
     update_points
     calculate_wins
     calculate_close_games
+    calculate_year
   end
 
   def update_points
@@ -29,6 +30,7 @@ class UserSeason < ApplicationRecord
       end
     end
     self.points = total_scores_arr.sum
+    self.points_per_game = total_scores_arr.sum / total_scores_arr.size
   end
 
   def calculate_regular_season_points(games, user)
@@ -103,5 +105,9 @@ class UserSeason < ApplicationRecord
     self.close_games = close_games_arr.count
     self.close_wins = close_games_arr.where(winner_id: user.id).count
     self.close_losses = close_games_arr.where(loser_id: user.id).count
+  end
+
+  def calculate_year
+    self.year = self.season.year
   end
 end

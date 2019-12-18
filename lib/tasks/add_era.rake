@@ -4,6 +4,9 @@ namespace :era do
       if game.year < 2016
         game.era = "fleaflicker"
         game.save!
+      else
+        game.era = "espn"
+        game.save!
       end
     end
   end

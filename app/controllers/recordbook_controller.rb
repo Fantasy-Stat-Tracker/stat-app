@@ -23,24 +23,76 @@ class RecordbookController < ApplicationController
     @game_lowscore = @games.order(:total_score).first(5)
     @single_game_high = order_highscores(@games).last(5).reverse
     @single_game_low = order_highscores(@games).first(5)
+    binding.pry
   end
 
   def season_index
+    @seasons = UserSeason.all
+    @most_points = @seasons.order(:points).last(5).reverse
+    @least_points = @seasons.order(:points).first(5)
+    @most_ppg = @seasons.order(:points_per_game).last(5).reverse
+    @most_regular_season_points = @seasons.order(:regular_season_points).last(5).reverse
+    @most_playoff_points = @seasons.order(:playoff_points).last(5).reverse
+    @most_wins = @seasons.order(:wins).last(5).reverse
+    @most_losses = @seasons.order(:losses).last(5).reverse
+    @close_games = @seasons.order(:close_games).last(5).reverse
+    @close_wins = @seasons.order(:close_wins).last(5).reverse
+    @close_losses = @seasons.order(:close_losses).last(5).reverse
+    @win_percentage = @seasons.order(:win_percentage).last(5).reverse
   end
 
   def season_espn
+    @seasons = UserSeason.where("year > ?", 2015)
+    @most_points = @seasons.order(:points).last(5).reverse
+    @least_points = @seasons.order(:points).first(5)
+    @most_ppg = @seasons.order(:points_per_game).last(5).reverse
+    @most_regular_season_points = @seasons.order(:regular_season_points).last(5).reverse
+    @most_playoff_points = @seasons.order(:playoff_points).last(5).reverse
+    @most_wins = @seasons.order(:wins).last(5).reverse
+    @most_losses = @seasons.order(:losses).last(5).reverse
+    @close_games = @seasons.order(:close_games).last(5).reverse
+    @close_wins = @seasons.order(:close_wins).last(5).reverse
+    @close_losses = @seasons.order(:close_losses).last(5).reverse
+    @win_percentage = @seasons.order(:win_percentage).last(5).reverse
   end
 
   def season_fleaflicker
+    @seasons = UserSeason.where("year < ?", 2016)
+    @most_points = @seasons.order(:points).last(5).reverse
+    @least_points = @seasons.order(:points).first(5)
+    @most_ppg = @seasons.order(:points_per_game).last(5).reverse
+    @most_regular_season_points = @seasons.order(:regular_season_points).last(5).reverse
+    @most_playoff_points = @seasons.order(:playoff_points).last(5).reverse
+    @most_wins = @seasons.order(:wins).last(5).reverse
+    @most_losses = @seasons.order(:losses).last(5).reverse
+    @close_games = @seasons.order(:close_games).last(5).reverse
+    @close_wins = @seasons.order(:close_wins).last(5).reverse
+    @close_losses = @seasons.order(:close_losses).last(5).reverse
+    @win_percentage = @seasons.order(:win_percentage).last(5).reverse
   end
 
   def all_time_index
+    @wins = order_all_time(:wins).sort_by {|user, wins| wins}.last(5).reverse
+    @losses = order_all_time(:losses).sort_by {|user, losses| losses}.last(5).reverse
+    @playoff_wins = order_all_time(:playoff_wins).sort_by {|user, wins| wins}.last(5).reverse
+    @playoff_losses = order_all_time(:playoff_losses).sort_by {|user, losses| losses}.last(5).reverse
+    @points = order_all_time(:points).sort_by {|user, points| points}.last(5).reverse
   end
 
   def all_time_espn
+    @wins = order_all_time(:wins, 2015, ">").sort_by {|user, wins| wins}.last(5).reverse
+    @losses = order_all_time(:losses, 2015, ">").sort_by {|user, losses| losses}.last(5).reverse
+    @playoff_wins = order_all_time(:playoff_wins, 2015, ">").sort_by {|user, wins| wins}.last(5).reverse
+    @playoff_losses = order_all_time(:playoff_losses, 2015, ">").sort_by {|user, losses| losses}.last(5).reverse
+    @points = order_all_time(:points, 2015, ">").sort_by {|user, points| points}.last(5).reverse
   end
 
   def all_time_fleaflicker
+    @wins = order_all_time(:wins, 2016, "<").sort_by {|user, wins| wins}.last(5).reverse
+    @losses = order_all_time(:losses, 2016, "<").sort_by {|user, losses| losses}.last(5).reverse
+    @playoff_wins = order_all_time(:playoff_wins, 2016, "<").sort_by {|user, wins| wins}.last(5).reverse
+    @playoff_losses = order_all_time(:playoff_losses, 2016, "<").sort_by {|user, losses| losses}.last(5).reverse
+    @points = order_all_time(:points, 2016, "<").sort_by {|user, points| points}.last(5).reverse
   end
 
   private
@@ -52,5 +104,22 @@ class RecordbookController < ApplicationController
       scores_arr << [game.away_score, game.away_id, game.year, game.week.number]
     end
     scores_arr.sort_by!{|game_arr| game_arr[0]}
+  end
+
+  def order_all_time(value_string, where_param = nil, sign = nil)
+    hash = {}
+    User.all.each do |user|
+      if where_param
+        seasons = UserSeason.where(user_id: user.id).where("year #{sign} ?", where_param)
+      else
+        seasons = UserSeason.where(user_id: user.id)
+      end
+      arr = []
+      seasons.each do |season|
+        arr << season.send(value_string)
+      end
+      hash[user.id] = arr.sum
+    end
+    hash
   end
 end
