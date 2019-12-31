@@ -35,6 +35,7 @@ gem 'simple_form'
 gem 'google-api-client', github: 'googleapis/google-api-ruby-client'
 gem 'awesome_print'
 gem 'hirb'
+gem 'httparty'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
