@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_18_001242) do
+ActiveRecord::Schema.define(version: 2019_12_26_194754) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -60,6 +60,7 @@ ActiveRecord::Schema.define(version: 2019_12_18_001242) do
     t.float "win_percentage"
     t.integer "year"
     t.float "points_per_game"
+    t.string "espn_team_id"
     t.index ["season_id"], name: "index_user_seasons_on_season_id"
     t.index ["user_id"], name: "index_user_seasons_on_user_id"
   end
@@ -74,6 +75,7 @@ ActiveRecord::Schema.define(version: 2019_12_18_001242) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.string "full_name"
+    t.string "espn_id"
   end
 
   create_table "weeks", force: :cascade do |t|

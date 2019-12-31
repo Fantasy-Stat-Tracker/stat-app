@@ -1,14 +1,17 @@
 class UserSeason < ApplicationRecord
   belongs_to :user
   belongs_to :season
+  has_many :games, through: :season
 
   before_save :update_stats
 
   def update_stats
-    update_points
-    calculate_wins
-    calculate_close_games
-    calculate_year
+    unless self.games.size == 0
+      update_points
+      calculate_wins
+      calculate_close_games
+      calculate_year
+    end
   end
 
   def update_points
