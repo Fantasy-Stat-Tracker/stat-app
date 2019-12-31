@@ -36,7 +36,7 @@ gem 'google-api-client', github: 'googleapis/google-api-ruby-client'
 gem 'awesome_print'
 gem 'hirb'
 gem 'httparty'
-
+gem 'rails_admin', '~> 2.0'
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 
