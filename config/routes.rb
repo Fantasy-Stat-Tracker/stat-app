@@ -17,6 +17,8 @@ Rails.application.routes.draw do
 
   get "/seasons" => 'seasons#index'
 
+  resources :password_resets
+
   get "/login" => 'sessions#new', as: :login_path
   post "/login" => 'sessions#create'
   delete "/logout" => 'sessions#destroy', as: :logout
