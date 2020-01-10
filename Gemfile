@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
+gem 'dotenv-rails', groups: [:development, :test]
 
 ruby '2.5.1'
 
@@ -36,6 +37,7 @@ gem 'google-api-client', github: 'googleapis/google-api-ruby-client'
 gem 'awesome_print'
 gem 'hirb'
 gem 'httparty'
+gem 'sendgrid-ruby'
 gem 'rails_admin', '~> 2.0'
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
