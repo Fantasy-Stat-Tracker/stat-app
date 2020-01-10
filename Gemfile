@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
+gem 'dotenv-rails', groups: [:development, :test]
 
 ruby '2.5.1'
 
@@ -19,7 +20,7 @@ gem 'webpacker'
 # gem 'mini_racer', platforms: :ruby
 
 # Use CoffeeScript for .coffee assets and views
-gem 'coffee-rails', '~> 4.2'
+# gem 'coffee-rails', '~> 4.2'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -36,6 +37,7 @@ gem 'google-api-client', github: 'googleapis/google-api-ruby-client'
 gem 'awesome_print'
 gem 'hirb'
 gem 'httparty'
+gem 'sendgrid-ruby'
 gem 'rails_admin', '~> 2.0'
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
