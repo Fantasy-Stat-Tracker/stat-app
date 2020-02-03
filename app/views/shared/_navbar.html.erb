@@ -1,4 +1,4 @@
-<% if current_user %>
+<% if current_member %>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark typewriter">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#statAppNav" aria-controls="statAppNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -6,7 +6,7 @@
     <div class="collapse navbar-collapse" id="statAppNav">
       <ul class="navbar-nav mr-auto mt-2 mt-lg-0 offset-md-1">
         <li class="nav-item"><%= link_to "Home", root_path, class: "nav-link" %></li>
-        <li class="nav-item"><%= link_to "Players", users_path, class: "nav-link" %></li>
+        <li class="nav-item"><%= link_to "Players", members_path, class: "nav-link" %></li>
         <li class="nav-item"><%= link_to "Seasons", seasons_path, class: "nav-link" %></li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" data-target="#navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

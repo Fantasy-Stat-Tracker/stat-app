@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_26_194754) do
+ActiveRecord::Schema.define(version: 2020_01_28_164600) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,15 +34,8 @@ ActiveRecord::Schema.define(version: 2019_12_26_194754) do
     t.index ["week_id"], name: "index_games_on_week_id"
   end
 
-  create_table "seasons", force: :cascade do |t|
-    t.string "winner"
-    t.integer "year"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "user_seasons", force: :cascade do |t|
-    t.bigint "user_id"
+  create_table "member_seasons", force: :cascade do |t|
+    t.bigint "member_id"
     t.bigint "season_id"
     t.boolean "is_winner"
     t.float "points"
@@ -61,11 +54,11 @@ ActiveRecord::Schema.define(version: 2019_12_26_194754) do
     t.integer "year"
     t.float "points_per_game"
     t.string "espn_team_id"
-    t.index ["season_id"], name: "index_user_seasons_on_season_id"
-    t.index ["user_id"], name: "index_user_seasons_on_user_id"
+    t.index ["member_id"], name: "index_member_seasons_on_member_id"
+    t.index ["season_id"], name: "index_member_seasons_on_season_id"
   end
 
-  create_table "users", force: :cascade do |t|
+  create_table "members", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
     t.string "email"
@@ -78,6 +71,13 @@ ActiveRecord::Schema.define(version: 2019_12_26_194754) do
     t.string "espn_id"
   end
 
+  create_table "seasons", force: :cascade do |t|
+    t.string "winner"
+    t.integer "year"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "weeks", force: :cascade do |t|
     t.integer "number"
     t.bigint "season_id"
@@ -87,7 +87,7 @@ ActiveRecord::Schema.define(version: 2019_12_26_194754) do
   end
 
   add_foreign_key "games", "weeks"
-  add_foreign_key "user_seasons", "seasons"
-  add_foreign_key "user_seasons", "users"
+  add_foreign_key "member_seasons", "members"
+  add_foreign_key "member_seasons", "seasons"
   add_foreign_key "weeks", "seasons"
 end

@@ -11,7 +11,7 @@
   <% @single_game_high.each do |game| %>
     <tr class="typewriter">
       <td><%= game[0] %></td>
-      <td><%= User.find(game[1]).full_name%>
+      <td><%= Member.find(game[1]).full_name%>
       <td><%= game[2] %></td>
       <td><%= game[3] %></td>
     </tr>
@@ -30,7 +30,7 @@
   <% @single_game_low.each do |game| %>
     <tr class="typewriter">
       <td><%= game[0] %></td>
-      <td><%= User.find(game[1]).full_name%>
+      <td><%= Member.find(game[1]).full_name%>
       <td><%= game[2] %></td>
       <td><%= game[3] %></td>
     </tr>
@@ -56,9 +56,9 @@
       <td><%= game.year %></td>
       <td><%= game.week.number %></td>
       <td><%= game.game_type %></td>
-      <td><%= User.find(game.home_id).full_name %></td>
+      <td><%= Member.find(game.home_id).full_name %></td>
       <td><%= game.home_score %></td>
-      <td><%= User.find(game.away_id).full_name %>
+      <td><%= Member.find(game.away_id).full_name %>
       <td><%= game.away_score %></td>
     </tr>
   <% end %>
@@ -84,9 +84,9 @@
       <td><%= game.year %></td>
       <td><%= game.week.number %></td>
       <td><%= game.game_type %></td>
-      <td><%= User.find(game.home_id).full_name %></td>
+      <td><%= Member.find(game.home_id).full_name %></td>
       <td><%= game.home_score %></td>
-      <td><%= User.find(game.away_id).full_name %>
+      <td><%= Member.find(game.away_id).full_name %>
       <td><%= game.away_score %></td>
     </tr>
   <% end %>

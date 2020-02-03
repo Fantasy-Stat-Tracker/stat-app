@@ -9,7 +9,7 @@
   <% @wins.each do |value| %>
     <tr class="typewriter">
       <td><%= value[1] %></td>
-      <td><%= User.find(value[0]).full_name %></td>
+      <td><%= Member.find(value[0]).full_name %></td>
     </tr>
   <% end %>
 </table>
@@ -25,7 +25,7 @@
   <% @losses.each do |value| %>
     <tr class="typewriter">
       <td><%= value[1] %></td>
-      <td><%= User.find(value[0]).full_name %></td>
+      <td><%= Member.find(value[0]).full_name %></td>
     </tr>
   <% end %>
 </table>
@@ -41,7 +41,7 @@
   <% @points.each do |value| %>
     <tr class="typewriter">
       <td><%= value[1] %></td>
-      <td><%= User.find(value[0]).full_name %></td>
+      <td><%= Member.find(value[0]).full_name %></td>
     </tr>
   <% end %>
 </table>
@@ -57,7 +57,7 @@
   <% @playoff_wins.each do |value| %>
     <tr class="typewriter">
       <td><%= value[1] %></td>
-      <td><%= User.find(value[0]).full_name %></td>
+      <td><%= Member.find(value[0]).full_name %></td>
     </tr>
   <% end %>
 </table>
@@ -73,7 +73,7 @@
   <% @playoff_losses.each do |value| %>
     <tr class="typewriter">
       <td><%= value[1] %></td>
-      <td><%= User.find(value[0]).full_name %></td>
+      <td><%= Member.find(value[0]).full_name %></td>
     </tr>
   <% end %>
 </table>

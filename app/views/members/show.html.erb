@@ -1,9 +1,9 @@
-<h1 class="typewriter home-header"><%= current_user.full_name %></h1>
+<h1 class="typewriter home-header"><%= @member.full_name %></h1>
 
-<%= form_tag(root_path, method: "get", class: "filter-bar") do %>
+<%= form_tag(member_path, method: "get", class: "filter-bar") do %>
   <div class="filter-item col-sm-12">
     <%= label_tag(:year, nil, class: "filter-label") %>
-    <%= select_tag(:year, options_for_select(current_user.seasons.pluck(:year).sort, params[:year]), class: "sort-menu-item", include_blank: "All") %>
+    <%= select_tag(:year, options_for_select(@member.seasons.pluck(:year).sort, params[:year]), class: "sort-menu-item", include_blank: "All") %>
   </div>
 
   <div class="filter-item col-sm-12">
@@ -13,7 +13,7 @@
 
   <div class="filter-item col-sm-12">
     <%= label_tag(:opponent, nil, class: "filter-label") %>
-    <%= select_tag(:opposing_player, options_for_select(@game_opponents.collect { | user | [user.full_name, user.id] }.sort, params[:opposing_player]), class: "sort-menu-item", include_blank: "All") %>
+    <%= select_tag(:opposing_player, options_for_select(@game_opponents.collect { | member | [member.full_name, member.id] }.sort, params[:opposing_player]), class: "sort-menu-item", include_blank: "All") %>
   </div>
 
   <div class="filter-item col-sm-12">
@@ -26,7 +26,7 @@
     <%= select_tag(:win_loss, options_for_select(["Win", "Loss"], params[:win_loss]), class: "sort-menu-item", include_blank: "All") %>
   </div>
 
-  <%= hidden_field_tag(:viewed_user, current_user.id) %>
+  <%= hidden_field_tag(:viewed_user, @member.id) %>
 
   <%= submit_tag("Filter", class: "btn btn-info") %>
 <% end %>
@@ -49,7 +49,7 @@
   </tr>
 </table>
 
-<table class="table col-md-10 col-sm-12">
+<table class="table col-md-10 col-sm-12 col-xs-12">
   <thead class="thead-dark typewriter">
     <th>Year</th>
     <th>W</th>
@@ -64,12 +64,12 @@
     <tr class="typewriter">
       <td><%= game.week.season.year %></td>
       <td><%= game.week.number %></td>
-      <td><%= game.home_or_away(current_user) %></td>
+      <td><%= game.home_or_away(@member) %></td>
       <td><%= game.game_type %></td>
-      <td><%= game.my_score(current_user) %></td>
-      <td><%= game.opponent_score(current_user) %></td>
-      <td><%= game.opponent(current_user) %>
-      <td><%= game.win_or_loss(current_user) %></td>
+      <td><%= game.my_score(@member) %></td>
+      <td><%= game.opponent_score(@member) %></td>
+      <td><%= game.opponent(@member) %>
+      <td><%= game.win_or_loss(@member) %></td>
     </tr>
   <% end %>
 </table>
