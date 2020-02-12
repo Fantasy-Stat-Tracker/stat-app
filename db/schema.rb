@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_28_164600) do
+ActiveRecord::Schema.define(version: 2020_02_11_234217) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,6 +32,18 @@ ActiveRecord::Schema.define(version: 2020_01_28_164600) do
     t.float "total_score"
     t.boolean "close"
     t.index ["week_id"], name: "index_games_on_week_id"
+  end
+
+  create_table "leagues", force: :cascade do |t|
+    t.integer "start_year"
+    t.string "espn_s2"
+    t.string "swid"
+    t.integer "total_members_count"
+    t.integer "active_members_count"
+    t.string "source"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "name"
   end
 
   create_table "member_seasons", force: :cascade do |t|
@@ -69,6 +81,8 @@ ActiveRecord::Schema.define(version: 2020_01_28_164600) do
     t.datetime "reset_password_sent_at"
     t.string "full_name"
     t.string "espn_id"
+    t.bigint "league_id"
+    t.index ["league_id"], name: "index_members_on_league_id"
   end
 
   create_table "seasons", force: :cascade do |t|
@@ -76,6 +90,8 @@ ActiveRecord::Schema.define(version: 2020_01_28_164600) do
     t.integer "year"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "league_id"
+    t.index ["league_id"], name: "index_seasons_on_league_id"
   end
 
   create_table "weeks", force: :cascade do |t|
@@ -89,5 +105,7 @@ ActiveRecord::Schema.define(version: 2020_01_28_164600) do
   add_foreign_key "games", "weeks"
   add_foreign_key "member_seasons", "members"
   add_foreign_key "member_seasons", "seasons"
+  add_foreign_key "members", "leagues"
+  add_foreign_key "seasons", "leagues"
   add_foreign_key "weeks", "seasons"
 end

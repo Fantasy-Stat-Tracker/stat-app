@@ -6,6 +6,7 @@ class Member < ApplicationRecord
   has_many :away_games, class_name: 'Game', foreign_key: 'away_id'
   has_many :winning_games, class_name: 'Game', foreign_key: 'winner_id'
   has_many :losing_games, class_name: 'Game', foreign_key: 'loser_id'
+  belongs_to :league
   validates :email, presence: true
 
   before_create :set_full_name

@@ -6,6 +6,7 @@ class CreateLeagues < ActiveRecord::Migration[5.2]
       t.string :swid
       t.integer :total_members_count
       t.integer :active_members_count
+      t.string :source
 
       t.timestamps
     end
