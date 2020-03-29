@@ -8,6 +8,10 @@ class ApplicationController < ActionController::Base
     @current_member ||= Member.find(session[:user_id]) if session[:user_id]
   end
 
+  def set_current_league
+    @league_id = current_member.league.id
+  end
+
   def require_member
     unless current_member
       redirect_to login_path

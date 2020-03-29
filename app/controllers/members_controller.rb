@@ -1,5 +1,6 @@
 class MembersController < ApplicationController
   before_action :require_member
+  before_action :set_current_league
 
   def index
     @members = Member.all

@@ -1,6 +1,6 @@
 <h1 class="typewriter home-header"><%= @member.full_name %></h1>
 
-<%= form_tag(member_path, method: "get", class: "filter-bar") do %>
+<%= form_tag(league_member_path(@league_id), method: "get", class: "filter-bar") do %>
   <div class="filter-item col-sm-12">
     <%= label_tag(:year, nil, class: "filter-label") %>
     <%= select_tag(:year, options_for_select(@member.seasons.pluck(:year).sort, params[:year]), class: "sort-menu-item", include_blank: "All") %>

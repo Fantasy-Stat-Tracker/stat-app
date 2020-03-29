@@ -1,5 +1,6 @@
 class GamesController < ApplicationController
   before_action :require_member
+  before_action :set_current_league
 
   def member_games
     @games_constant = Game.where(home_id: current_member.id).or(Game.where(away_id: current_member.id)).filter(params.slice(:year), current_member)

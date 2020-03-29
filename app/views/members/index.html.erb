@@ -5,7 +5,7 @@
   </thead>
   <% @members.each do |member| %>
     <tr class="typewriter">
-      <td><%= link_to(member.full_name, member_path(member.id)) %></td>
+      <td><%= link_to(member.full_name, league_member_path(@league_id, member.id)) %></td>
       <td><%= member.win_percentage.round(4) %></td>
     </tr>
   <% end %>

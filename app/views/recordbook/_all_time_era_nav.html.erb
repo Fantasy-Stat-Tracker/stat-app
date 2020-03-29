@@ -1,5 +1,5 @@
 <div class="recordbook-nav">  
-  <%= link_to "All", recordbook_all_time_path, class: "btn btn-info era-nav" %>
-  <%= link_to "ESPN", recordbook_all_time_espn_path, class: "btn btn-info era-nav" %>
-  <%= link_to "Fleaflicker", recordbook_all_time_fleaflicker_path, class: "btn btn-info era-nav" %>
+  <%= link_to "All", league_recordbook_all_time_path(@league_id), class: "btn btn-info era-nav" %>
+  <%= link_to "ESPN", league_recordbook_all_time_espn_path(@league_id), class: "btn btn-info era-nav" %>
+  <%= link_to "Fleaflicker", league_recordbook_all_time_fleaflicker_path(@league_id), class: "btn btn-info era-nav" %>
 </div>
