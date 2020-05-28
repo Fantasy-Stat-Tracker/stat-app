@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  start_year: 1
+  espn_s2: MyString
+  swid: MyString
+  total_members_count: 1
+  active_members_count: 1
+
+two:
+  start_year: 1
+  espn_s2: MyString
+  swid: MyString
+  total_members_count: 1
+  active_members_count: 1

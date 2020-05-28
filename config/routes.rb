@@ -1,21 +1,24 @@
 Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  resources :users
 
-  root 'games#user_games'
+  root 'games#member_games'
+  
+  resources :league do
+    resources :members
 
-  get "/recordbook/game" => 'recordbook#game_index'
-  get "/recordbook/game/espn" => 'recordbook#game_espn'
-  get "/recordbook/game/fleaflicker" => 'recordbook#game_fleaflicker'
-  get "/recordbook/season" => 'recordbook#season_index'
-  get "/recordbook/season/espn" => 'recordbook#season_espn'
-  get "/recordbook/season/fleaflicker" => 'recordbook#season_fleaflicker'
-  get "/recordbook/all_time" => 'recordbook#all_time_index'
-  get "/recordbook/all_time/espn" => 'recordbook#all_time_espn'
-  get "/recordbook/all_time/fleaflicker" => 'recordbook#all_time_fleaflicker'
+    get "/recordbook/game" => 'recordbook#game_index'
+    get "/recordbook/game/espn" => 'recordbook#game_espn'
+    get "/recordbook/game/fleaflicker" => 'recordbook#game_fleaflicker'
+    get "/recordbook/season" => 'recordbook#season_index'
+    get "/recordbook/season/espn" => 'recordbook#season_espn'
+    get "/recordbook/season/fleaflicker" => 'recordbook#season_fleaflicker'
+    get "/recordbook/all_time" => 'recordbook#all_time_index'
+    get "/recordbook/all_time/espn" => 'recordbook#all_time_espn'
+    get "/recordbook/all_time/fleaflicker" => 'recordbook#all_time_fleaflicker'
 
-  get "/seasons" => 'seasons#index'
+    get "/seasons" => 'seasons#index'
+  end
 
   resources :password_resets
 

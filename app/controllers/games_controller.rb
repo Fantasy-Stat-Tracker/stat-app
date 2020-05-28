@@ -1,17 +1,18 @@
 class GamesController < ApplicationController
   before_action :require_user
+  before_action :set_current_league
 
-  def user_games
-    @games_constant = Game.where(home_id: current_user.id).or(Game.where(away_id: current_user.id)).filter(params.slice(:year), current_user)
-    @games = Game.where(home_id: current_user.id).or(Game.where(away_id: current_user.id)).filter(params.slice(:year, :week_number, :opposing_player, :game_type), current_user).order(:year, :week_number)
+  def member_games
+    @games_constant = Game.where(home_id: current_member.id).or(Game.where(away_id: current_member.id)).filter(params.slice(:year), current_member)
+    @games = Game.where(home_id: current_member.id).or(Game.where(away_id: current_member.id)).filter(params.slice(:year, :week_number, :opposing_player, :game_type), current_member).order(:year, :week_number)
     win_loss_filter if params[:win_loss]
     @available_weeks = weeks_builder(@games_constant)
     @game_opponents = opponent_builder(@games_constant)
-    @wins = @games.where(winner_id: current_user.id).size
-    @losses = @games.where(loser_id: current_user.id).size
+    @wins = @games.where(winner_id: current_member.id).size
+    @losses = @games.where(loser_id: current_member.id).size
     @win_loss = (@wins.to_f / (@wins.to_f + @losses.to_f)).round(4)
-    @avg_score = avg_score(@games, current_user).to_f.round(2)
-    @avg_opponent_score = opponent_avg_score(@games, current_user).to_f.round(2)
+    @avg_score = avg_score(@games, current_member).to_f.round(2)
+    @avg_opponent_score = opponent_avg_score(@games, current_member).to_f.round(2)
   end
 
   private
@@ -32,18 +33,18 @@ class GamesController < ApplicationController
     weeks.uniq
   end
 
-  def avg_score(games, user)
+  def avg_score(games, member)
     total_score = []
     games.each do |game|
-      total_score << game.my_score(user)
+      total_score << game.my_score(member)
     end
     total_score.sum / total_score.size unless total_score.size.zero?
   end
 
-  def opponent_avg_score(games, user)
+  def opponent_avg_score(games, member)
     total_score = []
     games.each do |game|
-      total_score << game.opponent_score(user)
+      total_score << game.opponent_score(member)
     end
     total_score.sum / total_score.size unless total_score.size.zero?
   end
@@ -51,7 +52,7 @@ class GamesController < ApplicationController
   def opponent_builder(games)
     opponents = []
     games.each do |game|
-      opponents << game.opponent_user_object(current_user)
+      opponents << game.opponent_member_object(current_member)
     end
     opponents.uniq
   end
