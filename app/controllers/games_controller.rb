@@ -1,5 +1,5 @@
 class GamesController < ApplicationController
-  before_action :require_member
+  before_action :require_user
   before_action :set_current_league
 
   def member_games

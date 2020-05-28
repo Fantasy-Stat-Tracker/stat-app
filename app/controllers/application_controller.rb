@@ -4,16 +4,21 @@ class ApplicationController < ActionController::Base
 
   private
 
+  def current_user
+    @current_user ||= User.find(session[:user_id]) if session[:user_id]
+  end
+
   def current_member
-    @current_member ||= Member.find(session[:user_id]) if session[:user_id]
+    #this will need to be updated when users have multiple teams / members
+    current_user ? @current_user.members.first : nil
   end
 
   def set_current_league
     @league_id = current_member.league.id
   end
 
-  def require_member
-    unless current_member
+  def require_user
+    unless current_user
       redirect_to login_path
     end
   end
