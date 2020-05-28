@@ -17,7 +17,7 @@ namespace :user_from_member do
 
     Member.all.each do |member|
       if ACTIVES.include?(member.email)
-        a = User.find_or_create_by(first_name: member.first_name, last_name: member.last_name, email: member.email, password: "Password1")
+        a = User.create(first_name: member.first_name, last_name: member.last_name, email: member.email, password: "Password1")
         member.user_id = a.id
         member.save
       end
