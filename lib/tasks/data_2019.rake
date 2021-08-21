@@ -9,15 +9,15 @@ namespace :data_2019 do
 
     #needed to add espn player id's for the season
     players_response["teams"].each do |player|
-      member = User.find_by(espn_id: player["primaryOwner"])
-      UserSeason.find_or_create_by(season_id: year_season.id, user_id: member.id, espn_team_id: player["id"])
+      member = Member.find_by(espn_id: player["primaryOwner"])
+      MemberSeason.find_or_create_by(season_id: year_season.id, user_id: member.id, espn_team_id: player["id"])
     end
 
     games_response["schedule"].each do |game|
       week = Week.find_or_create_by(number: game["matchupPeriodId"], season_id: year_season.id)
-      home_user_season = UserSeason.find_by(espn_team_id: game["home"]["teamId"])
+      home_user_season = MemberSeason.find_by(espn_team_id: game["home"]["teamId"])
       home_user = home_user_season.user
-      away_user_season = UserSeason.find_by(espn_team_id: game["away"]["teamId"])
+      away_user_season = MemberSeason.find_by(espn_team_id: game["away"]["teamId"])
       away_user = away_user_season.user
       Game.find_or_create_by(game_type: game["matchupPeriodId"] > 13 ? "Playoffs" : "Regular", week_id: week.id, home_score: game["home"]["totalPoints"], away_score: game["away"]["totalPoints"], home_id: home_user.id, away_id: away_user.id)
     end
