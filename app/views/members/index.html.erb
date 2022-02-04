@@ -1,12 +1,12 @@
-<table class="table col-md-10 col-sm-12">
-  <thead class="thead-dark typewriter">
-    <th>Name</th>
-    <th>Win Pct</th>
+<table class="table flex mb-6 shadow typewriter">
+  <thead class="bg-gray-500 text-white border-b-4 border-gray-700">
+    <th class="px-6 py-3">Name</th>
+    <th class="px-6 py-3">Win Pct</th>
   </thead>
   <% @members.each do |member| %>
-    <tr class="typewriter">
-      <td><%= link_to(member.full_name, league_member_path(@league_id, member.id)) %></td>
-      <td><%= member.win_percentage.round(4) %></td>
+    <tr class="bg-indigo-50 border-b-2 border-indigo-500">
+      <td class="px-6 py-2"><%= link_to(member.full_name, league_member_path(@league_id, member.id), class: "font-semibold text-black hover:text-gray-700") %></td>
+      <td class="px-6 py-2"><%= member.win_percentage.round(4) %></td>
     </tr>
   <% end %>
 </table>

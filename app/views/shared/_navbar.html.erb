@@ -1,25 +1,62 @@
 <% if current_member %>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark typewriter">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#statAppNav" aria-controls="statAppNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="statAppNav">
-      <ul class="navbar-nav mr-auto mt-2 mt-lg-0 offset-md-1">
-        <li class="nav-item"><%= link_to "Home", root_path, class: "nav-link" %></li>
-        <li class="nav-item"><%= link_to "Players", league_members_path(@league_id), class: "nav-link" %></li>
-        <li class="nav-item"><%= link_to "Seasons", league_seasons_path(@league_id), class: "nav-link" %></li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" data-target="#navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Recordbook
-          </a>
-          <div class="dropdown-menu" id="navbarDropdown">
-            <a><%= link_to "Single Game", league_recordbook_game_path(@league_id), class: "dropdown-item" %></a>
-            <a><%= link_to "Season", league_recordbook_season_path(@league_id), class: "dropdown-item" %></a>
-            <a><%= link_to "All Time", league_recordbook_all_time_path(@league_id), class: "dropdown-item" %></a>
+  <nav class="pl-6 bg-gray-200 shadow-sm typewriter border-b-2 border-gray-700">
+    
+    <div class="px-2 py-3 hidden md:flex" id="statAppNav">
+      <ul class="flex">
+        <li class="mr-6 underline-gray"><%= link_to "Home", root_path, class: "text-black hover:text-gray-700" %></li>
+        <li class="mr-6 underline-gray"><%= link_to "Players", league_members_path(@league_id), class: "text-black hover:text-gray-700" %></li>
+        <li class="mr-6 underline-gray"><%= link_to "Seasons", league_seasons_path(@league_id), class: "text-black hover:text-gray-700" %></li>
+        <li class="mr-6 underline-gray">
+          <div class="dropdown inline-block">
+            <a class="inline-flex items-center" href="#">
+              Recordbook
+            </a>
+            <ul class="dropdown-menu absolute hidden text-gray-800 pt-1 bg-gray-200 whitespace-no-wrap overflow-x-visible">
+              <li class="px-2"><%= link_to "Single Game", league_recordbook_game_path(@league_id), class: "dropdown-item text-black hover:text-gray-700 py-2 overflow-x-visible block" %></li>
+              <li class="px-2"><%= link_to "Season", league_recordbook_season_path(@league_id), class: "dropdown-item text-black hover:text-gray-700 py-2 overflow-x-visible block" %></li>
+              <li class="px-2"><%= link_to "All Time", league_recordbook_all_time_path(@league_id), class: "dropdown-item text-black hover:text-gray-700 overflow-x-visible rounded-t py-2 block" %></li>
+            </ul>
           </div>
         </li>
-        <li class="nav-item"><%= link_to "Logout!", logout_path, method: :delete, class: "nav-link" %></li>
+        <li class="mr-6 underline-gray"><%= link_to "Logout!", logout_path, method: :delete, class: "text-black hover:text-gray-700" %></li>
       </ul>
     </div>
+
+    <div class="md:hidden flex items-center py-4">
+			<button class="outline-none mobile-menu-button">
+        <svg class=" w-8 h-8 text-gray-500 hover:text-green-500"
+          x-show="!showMenu"
+          fill="none"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="3"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+			</button>
+		</div>
+
+    <div class="hidden mobile-menu">
+			<ul class="">
+				<li><%= link_to "Home", root_path, class: "nav-link block text-xl px-2 py-4 hover:bg-green-500 transition duration-300" %></li>
+				<li><%= link_to "Players", league_members_path(@league_id), class: "nav-link block text-xl px-2 py-4 hover:bg-green-500 transition duration-300" %></li>
+				<li><%= link_to "Seasons", league_seasons_path(@league_id), class: "nav-link block text-xl px-2 py-4 hover:bg-green-500 transition duration-300" %></li>
+        <li><%= link_to "Recordbook - Single Game", league_recordbook_game_path(@league_id), class: "nav-link block text-xl px-2 py-4 hover:bg-green-500 transition duration-300" %></li>
+        <li><%= link_to "Recordbook - Season", league_recordbook_season_path(@league_id), class: "nav-link block text-xl px-2 py-4 hover:bg-green-500 transition duration-300" %></li>
+        <li><%= link_to "Recordbook - All Time", league_recordbook_all_time_path(@league_id), class: "nav-link block text-xl px-2 py-4 hover:bg-green-500 transition duration-300" %></li>
+        <li><%= link_to "Logout!", logout_path, method: :delete, class: "nav-link block text-xl px-2 py-4 hover:bg-green-500 transition duration-300" %></li>
+			</ul>
+		</div>
   </nav>
 <% end %>
+
+<script>
+  var btn = document.querySelector("button.mobile-menu-button");
+  var menu = document.querySelector(".mobile-menu");
+
+  btn.addEventListener("click", () => {
+    menu.classList.toggle("hidden");
+  });
+</script>

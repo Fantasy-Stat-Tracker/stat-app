@@ -51,9 +51,9 @@ class Game < ApplicationRecord
 
   def opponent(member)
     if member.id == home_id
-      Member.find(away_id).full_name
+      Member.find(away_id).short_name
     else
-      Member.find(home_id).full_name
+      Member.find(home_id).short_name
     end
   end
 
