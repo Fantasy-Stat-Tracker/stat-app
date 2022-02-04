@@ -1,12 +1,12 @@
-<table class="table col-md-10 col-sm-12">
-  <thead class="thead-dark typewriter">
-    <th>Year</th>
-    <th>Champion</th>
+<table class="table flex mb-6 shadow">
+  <thead class="typewriter bg-gray-500 text-white border-b-4 border-gray-700">
+    <th class="px-6 py-3">Year</th>
+    <th class="px-6 py-3">Champion</th>
   </thead>
   <% @seasons.each do |season| %>
-    <tr class="typewriter">
-      <td><%= season.year %></td>
-      <td><%= season.find_winner(season) %></td>
+    <tr class="typewriter bg-indigo-50 border-b-2 border-indigo-500">
+      <td class="px-6 py-2"><%= season.year %></td>
+      <td class="px-6 py-2"><%= season.find_winner(season) %></td>
     </tr>
   <% end %>
 </table>

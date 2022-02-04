@@ -15,6 +15,10 @@ class Member < ApplicationRecord
     "#{first_name} #{last_name}"
   end
 
+  def short_name
+    "#{first_name} #{last_name.chr}"
+  end
+
   def games
     self.home_games.to_a + self.away_games.to_a
   end
