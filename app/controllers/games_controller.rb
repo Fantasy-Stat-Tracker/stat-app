@@ -3,8 +3,8 @@ class GamesController < ApplicationController
   before_action :set_current_league
 
   def member_games
-    @games_constant = Game.where(home_id: current_member.id).or(Game.where(away_id: current_member.id)).filter(params.slice(:year), current_member)
-    @games = Game.where(home_id: current_member.id).or(Game.where(away_id: current_member.id)).filter(params.slice(:year, :week_number, :opposing_player, :game_type), current_member).order(:year, :week_number)
+    @games_constant = Game.where(home_id: current_member.id).or(Game.where(away_id: current_member.id)).custom_filter(params.slice(:year), current_member)
+    @games = Game.where(home_id: current_member.id).or(Game.where(away_id: current_member.id)).custom_filter(params.slice(:year, :week_number, :opposing_player, :game_type), current_member).order(:year, :week_number)
     win_loss_filter if params[:win_loss]
     @available_weeks = weeks_builder(@games_constant)
     @game_opponents = opponent_builder(@games_constant)
