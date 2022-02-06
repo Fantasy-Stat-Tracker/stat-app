@@ -42,3 +42,6 @@ Stat\ App-cad981b5b216.json
 /yarn-error.log
 yarn-debug.log*
 .yarn-integrity
+
+/app/assets/builds/*
+!/app/assets/builds/.keep
