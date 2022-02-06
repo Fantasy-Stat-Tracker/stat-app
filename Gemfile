@@ -5,7 +5,7 @@ gem 'dotenv-rails', groups: [:development, :test]
 ruby '3.1.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 6.1'
+gem 'rails', '~> 7.0.1'
 # Use postgresql as the database for Active Record
 gem 'pg', '>= 0.18', '< 2.0'
 # Use Puma as the app server
@@ -37,7 +37,7 @@ gem 'awesome_print'
 gem 'hirb'
 gem 'httparty'
 gem 'sendgrid-ruby'
-gem 'rails_admin', '~> 2.0'
+gem 'rails_admin'
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 
@@ -53,7 +53,6 @@ gem 'net-smtp', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-  gem 'annotate'
 end
 
 group :development do
