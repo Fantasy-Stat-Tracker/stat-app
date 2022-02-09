@@ -9,7 +9,7 @@ class MembersController < ApplicationController
   def show
     @member = Member.find(params[:id])
     @games_constant = Game.where(home_id: @member.id).or(Game.where(away_id: @member.id)).custom_filter(params.slice(:year), @member)
-    @games = Game.where(home_id: @member.id).or(Game.where(away_id: @member.id)).custom_filter(params.slice(:year, :week_number, :opposing_player, :game_type), @member).order(:year, :week_number)
+    @games = Game.where(home_id: @member.id).or(Game.where(away_id: @member.id)).custom_filter(params.slice(:year, :week_number, :opposing_player, :game_type), @member).order(year: :desc).order(:week_number)
     win_loss_filter if params[:win_loss]
     @available_weeks = weeks_builder(@games_constant)
     @game_opponents = opponent_builder(@games_constant, @member)

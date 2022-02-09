@@ -9,9 +9,11 @@ gem 'rails', '~> 7.0.1'
 # Use postgresql as the database for Active Record
 gem 'pg', '>= 0.18', '< 2.0'
 # Use Puma as the app server
-gem 'puma', '~> 3.12'
+gem 'puma', '~> 5.6'
 # javascript
 gem 'jsbundling-rails'
+# css bundling
+gem 'cssbundling-rails'
 # stimulus
 gem 'stimulus-rails'
 # styling
