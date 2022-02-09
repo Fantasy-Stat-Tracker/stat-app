@@ -43,25 +43,23 @@
 </div>
 <table class="table flex mb-6 shadow">
   <thead class="typewriter bg-gray-500 text-white border-b-4 border-gray-700">
-    <th class="px-6 py-3">Total Score</th>
+    <th class="px-6 py-3">Total</th>
     <th class="px-6 py-3">Year</th>
-    <th class="px-6 py-3">Week</th>
     <th class="px-6 py-3">Game Type</th>
     <th class="px-6 py-3">Home</th>
-    <th class="px-6 py-3">Home Score</th>
+    <th class="px-2 py-3"></th>
     <th class="px-6 py-3">Away</th>
-    <th class="px-6 py-3">Away Score</th>
+    <th class="px-2 py-3"></th>
   </thead>
   <% @game_highscore.each do |game| %>
     <tr class="typewriter bg-indigo-50 border-b-2 border-indigo-500">
       <td class="px-6 py-2"><%= game.total_score %></td>
       <td class="px-6 py-2"><%= game.year %></td>
-      <td class="px-6 py-2"><%= game.week.number %></td>
       <td class="px-6 py-2"><%= game.game_type %></td>
-      <td class="px-6 py-2"><%= Member.find(game.home_id).full_name %></td>
-      <td class="px-6 py-2"><%= game.home_score %></td>
-      <td class="px-6 py-2"><%= Member.find(game.away_id).full_name %>
-      <td class="px-6 py-2"><%= game.away_score %></td>
+      <td class="px-6 py-2"><%= Member.find(game.home_id).short_name %></td>
+      <td class="px-2 py-2"><%= game.home_score %></td>
+      <td class="px-6 py-2"><%= Member.find(game.away_id).short_name %>
+      <td class="px-2 py-2"><%= game.away_score %></td>
     </tr>
   <% end %>
 </table>
@@ -71,25 +69,23 @@
 </div>
 <table class="table flex mb-6 shadow">
   <thead class="typewriter bg-gray-500 text-white border-b-4 border-gray-700">
-    <th class="px-6 py-3">Total Score</th>
+    <th class="px-6 py-3">Total</th>
     <th class="px-6 py-3">Year</th>
-    <th class="px-6 py-3">Week</th>
     <th class="px-6 py-3">Game Type</th>
     <th class="px-6 py-3">Home</th>
-    <th class="px-6 py-3">Home Score</th>
+    <th class="px-2 py-3"></th>
     <th class="px-6 py-3">Away</th>
-    <th class="px-6 py-3">Away Score</th>
+    <th class="px-2 py-3"></th>
   </thead>
   <% @game_lowscore.each do |game| %>
     <tr class="typewriter bg-indigo-50 border-b-2 border-indigo-500">
       <td class="px-6 py-2"><%= game.total_score %></td>
       <td class="px-6 py-2"><%= game.year %></td>
-      <td class="px-6 py-2"><%= game.week.number %></td>
       <td class="px-6 py-2"><%= game.game_type %></td>
-      <td class="px-6 py-2"><%= Member.find(game.home_id).full_name %></td>
-      <td class="px-6 py-2"><%= game.home_score %></td>
-      <td class="px-6 py-2"><%= Member.find(game.away_id).full_name %>
-      <td class="px-6 py-2"><%= game.away_score %></td>
+      <td class="px-6 py-2"><%= Member.find(game.home_id).short_name %></td>
+      <td class="px-2 py-2"><%= game.home_score %></td>
+      <td class="px-6 py-2"><%= Member.find(game.away_id).short_name %>
+      <td class="px-2 py-2"><%= game.away_score %></td>
     </tr>
   <% end %>
 </table>

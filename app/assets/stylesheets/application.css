@@ -13,9 +13,6 @@
  *= require_tree .
  *= require_self
  */
-
-//  @import "bootstrap";
-
   .container-fluid {
     background-color: #f8f9fa;
   }

@@ -5,27 +5,27 @@
 <%= form_tag(league_member_path(@league_id), method: "get", class: "flex flex-wrap mb-6 py-4") do %>
   <div class="filter-item pr-4 mt-2">
     <%= label_tag(:year, nil, class: "pr-2") %>
-    <%= select_tag(:year, options_for_select(@member.seasons.pluck(:year).sort, params[:year]), class: "rounded", include_blank: "All") %>
+    <%= select_tag(:year, options_for_select(@member.seasons.pluck(:year).sort, params[:year]), class: "rounded pl-3 pr-8 py-2", include_blank: "All") %>
   </div>
 
   <div class="filter-item pr-4 mt-2">
     <%= label_tag(:week, nil, class: "pr-2") %>
-    <%= select_tag(:week_number, options_for_select(@available_weeks.sort, params[:week_number]), class: "rounded", include_blank: "All") %>
+    <%= select_tag(:week_number, options_for_select(@available_weeks.sort, params[:week_number]), class: "rounded pl-3 pr-8 py-2", include_blank: "All") %>
   </div>
 
   <div class="filter-item pr-4 mt-2">
     <%= label_tag(:opponent, nil, class: "pr-2") %>
-    <%= select_tag(:opposing_player, options_for_select(@game_opponents.collect { | member | [member.full_name, member.id] }.sort, params[:opposing_player]), class: "rounded", include_blank: "All") %>
+    <%= select_tag(:opposing_player, options_for_select(@game_opponents.collect { | member | [member.full_name, member.id] }.sort, params[:opposing_player]), class: "rounded pl-3 pr-8 py-2", include_blank: "All") %>
   </div>
 
   <div class="filter-item pr-4 mt-2">
     <%= label_tag(:game_type, nil, class: "pr-2") %>
-    <%= select_tag(:game_type, options_for_select(["Regular", "Playoffs"], params[:game_type]), class: "rounded", include_blank: "All") %>
+    <%= select_tag(:game_type, options_for_select(["Regular", "Playoffs"], params[:game_type]), class: "rounded pl-3 pr-8 py-2", include_blank: "All") %>
   </div>
 
   <div class="filter-item pr-4 mt-2">
     <%= label_tag(:win_loss, nil, class: "pr-2") %>
-    <%= select_tag(:win_loss, options_for_select(["Win", "Loss"], params[:win_loss]), class: "rounded", include_blank: "All") %>
+    <%= select_tag(:win_loss, options_for_select(["Win", "Loss"], params[:win_loss]), class: "rounded pl-3 pr-8 py-2", include_blank: "All") %>
   </div>
 
   <%= hidden_field_tag(:viewed_user, @member.id) %>
