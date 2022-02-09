@@ -389,7 +389,7 @@ DEPENDENCIES
   pg (>= 0.18, < 2.0)
   pry
   puma (~> 5.6)
-  rails (~> 7.0.1)
+  rails (~> 7.0)
   rails_admin
   sass-rails (~> 5.0)
   selenium-webdriver
