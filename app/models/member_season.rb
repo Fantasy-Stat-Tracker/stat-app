@@ -6,12 +6,12 @@ class MemberSeason < ApplicationRecord
   before_save :update_stats
 
   def update_stats
-    unless self.games.size == 0
-      update_points
-      calculate_wins
-      calculate_close_games
-      calculate_year
-    end
+    return if games.size.zero?
+
+    update_points
+    calculate_wins
+    calculate_close_games
+    calculate_year
   end
 
   def update_points

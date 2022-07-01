@@ -36,7 +36,6 @@ class Member < ApplicationRecord
   def set_full_name
     self.full_name = "#{first_name} #{last_name}"
   end
-  
 end
 
 # == Schema Information

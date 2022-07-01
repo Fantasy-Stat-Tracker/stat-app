@@ -66,7 +66,7 @@ class Game < ApplicationRecord
   end
 
   def year
-    self.week.season.year
+    week.season.year
   end
 
   private
