@@ -1,0 +1,5 @@
+<% if @winning_members.include?(current_member.id) %>
+  <%= render partial: "champions" %>
+<% else %>
+  <%= render partial: "chumpions" %>
+<% end %>

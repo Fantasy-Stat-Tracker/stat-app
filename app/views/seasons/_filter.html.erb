@@ -1,0 +1,22 @@
+<%= form_tag(
+  league_season_path(id: @filtered_season.id),
+  method: "get",
+  class: "flex flex-wrap mb-6 py-4",
+  data: {
+    controller: "filter",
+    filter_target: "form",
+    turbo_frame: "season_table"
+  }
+) do %>
+  <div class="filter-item pr-4 mt-2">
+    <%= label_tag(:year, nil, class: "pr-2") %>
+    <%= select_tag(
+      :year,
+      options_for_select(@filter_data),
+      class: "rounded pl-3 pr-8 py-2",
+      data: {
+        action: "change->filter#search"
+      }) 
+    %>
+  </div>
+<% end %>
