@@ -1,4 +1,4 @@
-<div class="typewriter home-header text-3xl px-4 py-4">
+<div class="typewriter home-header text-3xl px-4 pb-4">
   <span class="underline-blue"> <%= current_member.full_name %></span>
 </div>
 
@@ -28,7 +28,7 @@
     <%= select_tag(:win_loss, options_for_select(["Win", "Loss"], params[:win_loss]), class: "rounded px-3 py-2", include_blank: "All") %>
   </div>
 
-  <%= hidden_field_tag(:viewed_user, current_member.id) %>
+  <%= hidden_field_tag(:viewed_member, current_member.id) %>
 
   <%= submit_tag("Filter", class: "bg-gray-500 hover:bg-gray-400 text-white font-bold py-2 px-4 border-b-4 border-gray-700 hover:border-gray-500 rounded mt-2") %>
 <% end %>

@@ -28,7 +28,14 @@ class Member < ApplicationRecord
   end
 
   def win_percentage
-    self.winning_games.count / (self.winning_games.count + self.losing_games.count).to_f
+    value = (self.winning_games.count / (self.winning_games.count + self.losing_games.count).to_f) * 100
+    "#{value.round(2)} %"
+  end
+
+  def ppg
+    total_games = home_games.count + away_games.count
+    total_points = home_games.sum(:home_score) + away_games.sum(:away_score)
+    (total_points / total_games).round(1)
   end
 
   private

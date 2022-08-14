@@ -19,9 +19,9 @@ class GamesController < ApplicationController
 
   def win_loss_filter
     if params[:win_loss] == "Win"
-      @games = @games.where(winner_id: params[:viewed_user])
+      @games = @games.where(winner_id: params[:viewed_member])
     elsif params[:win_loss] == "Loss"
-      @games = @games.where(loser_id: params[:viewed_user])
+      @games = @games.where(loser_id: params[:viewed_member])
     else
       @games
     end
