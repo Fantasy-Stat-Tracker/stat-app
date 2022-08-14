@@ -9,7 +9,6 @@ export default class extends Controller {
   }
 
   follow() {
-    debugger
     window.location = this.urlValue
   }
 }
