@@ -5,8 +5,6 @@ class MemberSeason < ApplicationRecord
 
   before_save :update_stats
 
-  include Filterable
-
   def update_stats
     return if games.size.zero?
 

@@ -5,6 +5,4 @@
 import { application } from './application'
 
 import FilterController from './filter_controller.js'
-import FormSubmitController from './form_submit_controller.js'
 application.register('filter', FilterController)
-application.register('form-submit', FormSubmitController)

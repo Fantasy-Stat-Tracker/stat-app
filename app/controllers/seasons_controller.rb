@@ -1,5 +1,4 @@
 class SeasonsController < ApplicationController
-  include Filterable
   before_action :require_user
   before_action :set_current_league
   before_action :set_filter_data
