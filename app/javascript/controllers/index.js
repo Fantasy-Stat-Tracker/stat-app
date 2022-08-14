@@ -2,7 +2,10 @@
 // Run that command whenever you add a new controller or create them with
 // ./bin/rails generate stimulus controllerName
 
-import { application } from './application'
+import { application } from "./application"
 
-import FilterController from './filter_controller.js'
-application.register('filter', FilterController)
+import ClickableTrController from "./clickable_tr_controller.js"
+application.register("clickable-tr", ClickableTrController)
+
+import FilterController from "./filter_controller.js"
+application.register("filter", FilterController)
