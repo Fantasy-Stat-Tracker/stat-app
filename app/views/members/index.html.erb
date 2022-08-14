@@ -1,11 +1,17 @@
-<table class="table flex my-6 shadow typewriter">
+<table class="table my-6 shadow typewriter">
   <thead class="bg-gray-500 text-white border-b-4 border-gray-700">
     <th class="px-6 py-3">Name</th>
     <th class="px-6 py-3">Win Pct</th>
   </thead>
   <% @members.each do |member| %>
-    <tr class="bg-indigo-50 border-b-2 border-indigo-500">
-      <td class="px-6 py-2"><%= link_to(member.full_name, league_member_path(@league_id, member.id), class: "font-semibold text-black hover:text-gray-700") %></td>
+    <tr 
+      class="bg-indigo-50 border-b-2 border-indigo-500 hover:text-gray-500"
+      data-controller="clickable-tr"
+      data-clickable-tr-target="clickable-row"
+      data-clickable-tr-url-value="<%= league_member_url(@league_id, member.id) %>"
+      data-action="click->clickable-tr#follow"
+    >
+      <td class="px-6 py-2"><%= member.full_name %></td>
       <td class="px-6 py-2"><%= member.win_percentage.round(4) %></td>
     </tr>
   <% end %>
