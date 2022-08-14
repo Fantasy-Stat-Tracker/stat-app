@@ -1,0 +1,32 @@
+<p class="px-6 py-4 text-xl">
+  The Champions Club is an exlusive club where winners drink 
+  champagne and losers... well let's face it, losers are not
+  allowed in here. Enjoy!
+</p>
+<table class="table mb-6 shadow">
+  <thead class="bg-gray-500">
+    <tr>
+      <th class="px-6 py-2 text-3xl">&#x1F3C6 &#x1F3C6 &#x1F3C6 &#x1F3C6 &#x1F3C6</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <% @champ_seasons.each do |member_id, champion_seasons| %>
+    <tbody>
+      <tr class="typewriter bg-indigo-50 border-b-2 border-indigo-500">
+        <td class="px-6 py-2">
+          <%= Member.find(member_id).full_name %>
+        </td>
+        <td class="px-6 py-2">
+          <% years_array = champion_seasons.map{ |member_season| member_season.year } %>
+          <%= years_array.join(", ") %>
+        </td>
+        <td class = px-4>
+          <button class="bg-gray-500 hover:bg-gray-400 text-white font-bold py-2 px-4 border-b-4 border-gray-700 hover:border-gray-500 rounded mt-2">
+            &#x1F3C6
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  <% end %>
+<table>

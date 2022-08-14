@@ -17,7 +17,8 @@ Rails.application.routes.draw do
     get "/recordbook/all_time/espn" => 'recordbook#all_time_espn'
     get "/recordbook/all_time/fleaflicker" => 'recordbook#all_time_fleaflicker'
 
-    get "/seasons" => 'seasons#index'
+    resources :seasons, only: [:index, :show]
+    resources :champions_club, only: [:index]
   end
 
   resources :password_resets
