@@ -69,6 +69,10 @@ class Game < ApplicationRecord
     week.season.year
   end
 
+  def styled_week_number
+    game_type == "Playoffs" ? "*#{week.number}" : "#{week.number}"
+  end
+
   private
 
   def set_winner
