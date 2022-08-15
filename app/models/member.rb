@@ -29,7 +29,7 @@ class Member < ApplicationRecord
 
   def win_percentage
     value = (self.winning_games.count / (self.winning_games.count + self.losing_games.count).to_f) * 100
-    "#{value.round(2)} %"
+    "#{value.round(1)}%"
   end
 
   def ppg
