@@ -1,10 +1,10 @@
 <table class="table mb-6 shadow">
   <thead class="typewriter bg-gray-500 text-white border-b-4 border-gray-700">
-    <th class="px-6 py-3">Player</th>
-    <th class="px-6 py-3">Wins</th>
-    <th class="px-6 py-3">Losses</th>
-    <th class="px-6 py-3">%</th>
-    <th class="px-6 py-3">PPG</th>
+    <th class="px-4 py-3">Player</th>
+    <th class="px-2 py-3">Wins</th>
+    <th class="px-2 py-3">Losses</th>
+    <th class="px-2 py-3">%</th>
+    <th class="px-2 py-3">PPG</th>
     <th></th>
   </thead>
   <% @member_seasons.each do |member_season| %>
@@ -13,11 +13,11 @@
     <% else %>
       <tr class="typewriter bg-indigo-50 border-b-2 border-indigo-500">
     <% end %>
-      <td class="px-6 py-2"><%= member_season.member.full_name %></td>
-      <td class="px-6 py-2"><%= member_season.wins %></td>
-      <td class="px-6 py-2"><%= member_season.losses %></td>
-      <td class="px-6 py-2"><%= (member_season.win_percentage * 100).round(1) %></td>
-      <td class="px-6 py-2"><%= member_season.points_per_game.round(1) %></td>
+      <td class="px-4 py-2"><%= member_season.member.full_name %></td>
+      <td class="px-2 py-2"><%= member_season.wins %></td>
+      <td class="px-2 py-2"><%= member_season.losses %></td>
+      <td class="px-2 py-2"><%= (member_season.win_percentage * 100).round(1) %></td>
+      <td class="px-2 py-2"><%= member_season.points_per_game.round(1) %></td>
       <% if member_season.is_winner == true %>
         <td class="px-2"> &#x1F3C6 </td>
       <% else %>
