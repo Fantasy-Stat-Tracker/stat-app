@@ -7,17 +7,15 @@ class SeasonsController < ApplicationController
     @league = League.find(@league_id)
     @filtered_season = params[:season] || @league.seasons.order("year DESC").first
     @member_seasons = @league.member_seasons.where(season_id: @filtered_season.id).order("win_percentage DESC")
+    @playoff_games_by_week = @filtered_season.games.where(game_type: "Playoffs").group_by(&:week_number)
   end
 
   def show
     season = Season.find(params[:year])
     @member_seasons = season.member_seasons.order("win_percentage DESC")
+    @playoff_games_by_week = season.games.where(game_type: "Playoffs").group_by(&:week_number)
 
-    if turbo_frame_request?
-      puts "this was a turbo frame request"
-    end
-
-    render partial: "show", locals: { member_seasons: @member_seasons }
+    render partial: "show", locals: { member_seasons: @member_seasons, playoff_games_by_week: @playoff_games_by_week }
   end
 
   private
