@@ -5,7 +5,6 @@
     <th class="px-2 py-3">L's</th>
     <th class="px-2 py-3">%</th>
     <th class="px-2 py-3">PPG</th>
-    <th></th>
   </thead>
   <% @member_seasons.each do |member_season| %>
     <% if member_season.is_winner == true %>
@@ -18,11 +17,6 @@
       <td class="px-2 py-2"><%= member_season.losses %></td>
       <td class="px-2 py-2"><%= (member_season.win_percentage * 100).round(1) %></td>
       <td class="px-2 py-2"><%= member_season.points_per_game.round(1) %></td>
-      <% if member_season.is_winner == true %>
-        <td class="px-2"> &#x1F3C6 </td>
-      <% else %>
-        <td></td>
-      <% end %>
     </tr>
   <% end %>
 </table>

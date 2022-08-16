@@ -11,9 +11,9 @@
   </thead>
   <% @most_points.each do |season| %>
     <tr class="typewriter bg-indigo-50 border-b-2 border-indigo-500">
-      <td class="px-3 py-2"><%= season.points %></td>
-      <td class="px-3 py-2"><%= season.year %></td>
-      <td class="px-6 py-2"><%= season.member.full_name %></td>
+      <td class="px-2 py-2"><%= season.points %></td>
+      <td class="px-2 py-2"><%= season.year %></td>
+      <td class="px-2 py-2"><%= season.member.full_name %></td>
     </tr>
   <% end %>
 </table>
@@ -31,9 +31,9 @@
   </thead>
   <% @least_points.each do |season| %>
     <tr class="typewriter bg-indigo-50 border-b-2 border-indigo-500">
-      <td class="px-6 py-2"><%= season.points %></td>
-      <td class="px-6 py-2"><%= season.year %></td>
-      <td class="px-6 py-2"><%= season.member.full_name %></td>
+      <td class="px-2 py-2"><%= season.points %></td>
+      <td class="px-2 py-2"><%= season.year %></td>
+      <td class="px-2 py-2"><%= season.member.full_name %></td>
     </tr>
   <% end %>
 </table>
@@ -51,9 +51,9 @@
   </thead>
   <% @most_ppg.each do |season| %>
     <tr class="typewriter bg-indigo-50 border-b-2 border-indigo-500">
-      <td class="px-6 py-2"><%= season.points_per_game.round(2) %></td>
-      <td class="px-6 py-2"><%= season.year %></td>
-      <td class="px-6 py-2"><%= season.member.full_name %></td>
+      <td class="px-2 py-2"><%= season.points_per_game.round(2) %></td>
+      <td class="px-2 py-2"><%= season.year %></td>
+      <td class="px-2 py-2"><%= season.member.full_name %></td>
     </tr>
   <% end %>
 </table>
@@ -71,9 +71,9 @@
   </thead>
   <% @most_regular_season_points.each do |season| %>
     <tr class="typewriter bg-indigo-50 border-b-2 border-indigo-500">
-      <td class="px-6 py-2"><%= season.regular_season_points %></td>
-      <td class="px-6 py-2"><%= season.year %></td>
-      <td class="px-6 py-2"><%= season.member.full_name %></td>
+      <td class="px-2 py-2"><%= season.regular_season_points %></td>
+      <td class="px-2 py-2"><%= season.year %></td>
+      <td class="px-2 py-2"><%= season.member.full_name %></td>
     </tr>
   <% end %>
 </table>
@@ -91,9 +91,9 @@
   </thead>
   <% @most_playoff_points.each do |season| %>
     <tr class="typewriter bg-indigo-50 border-b-2 border-indigo-500">
-      <td class="px-6 py-2"><%= season.playoff_points %></td>
-      <td class="px-6 py-2"><%= season.year %></td>
-      <td class="px-6 py-2"><%= season.member.full_name %></td>
+      <td class="px-2 py-2"><%= season.playoff_points %></td>
+      <td class="px-2 py-2"><%= season.year %></td>
+      <td class="px-2 py-2"><%= season.member.full_name %></td>
     </tr>
   <% end %>
 </table>
@@ -111,9 +111,9 @@
   </thead>
   <% @most_wins.each do |season| %>
     <tr class="typewriter bg-indigo-50 border-b-2 border-indigo-500">
-      <td class="px-6 py-2"><%= season.wins %></td>
-      <td class="px-6 py-2"><%= season.year %></td>
-      <td class="px-6 py-2"><%= season.member.full_name %></td>
+      <td class="px-2 py-2"><%= season.wins %></td>
+      <td class="px-2 py-2"><%= season.year %></td>
+      <td class="px-2 py-2"><%= season.member.full_name %></td>
     </tr>
   <% end %>
 </table>
@@ -131,9 +131,9 @@
   </thead>
   <% @most_losses.each do |season| %>
     <tr class="typewriter bg-indigo-50 border-b-2 border-indigo-500">
-      <td class="px-6 py-2"><%= season.losses %></td>
-      <td class="px-6 py-2"><%= season.year %></td>
-      <td class="px-6 py-2"><%= season.member.full_name %></td>
+      <td class="px-2 py-2"><%= season.losses %></td>
+      <td class="px-2 py-2"><%= season.year %></td>
+      <td class="px-2 py-2"><%= season.member.full_name %></td>
     </tr>
   <% end %>
 </table>
@@ -151,9 +151,9 @@
   </thead>
   <% @win_percentage.each do |season| %>
     <tr class="typewriter bg-indigo-50 border-b-2 border-indigo-500">
-      <td class="px-6 py-2"><%= season.win_percentage.round(4) %></td>
-      <td class="px-6 py-2"><%= season.year %></td>
-      <td class="px-6 py-2"><%= season.member.full_name %></td>
+      <td class="px-2 py-2"><%= season.win_percentage.round(4) %></td>
+      <td class="px-2 py-2"><%= season.year %></td>
+      <td class="px-2 py-2"><%= season.member.full_name %></td>
     </tr>
   <% end %>
 </table>
@@ -173,9 +173,9 @@
   </thead>
   <% @close_games.each do |season| %>
     <tr class="typewriter bg-indigo-50 border-b-2 border-indigo-500">
-      <td class="px-6 py-2"><%= season.close_games %></td>
-      <td class="px-6 py-2"><%= season.year %></td>
-      <td class="px-6 py-2"><%= season.member.full_name %></td>
+      <td class="px-2 py-2"><%= season.close_games %></td>
+      <td class="px-2 py-2"><%= season.year %></td>
+      <td class="px-2 py-2"><%= season.member.full_name %></td>
     </tr>
   <% end %>
 </table>
@@ -193,9 +193,9 @@
   </thead>
   <% @close_wins.each do |season| %>
     <tr class="typewriter bg-indigo-50 border-b-2 border-indigo-500">
-      <td class="px-6 py-2"><%= season.close_wins %></td>
-      <td class="px-6 py-2"><%= season.year %></td>
-      <td class="px-6 py-2"><%= season.member.full_name %></td>
+      <td class="px-2 py-2"><%= season.close_wins %></td>
+      <td class="px-2 py-2"><%= season.year %></td>
+      <td class="px-2 py-2"><%= season.member.full_name %></td>
     </tr>
   <% end %>
 </table>
@@ -213,9 +213,9 @@
   </thead>
   <% @close_losses.each do |season| %>
     <tr class="typewriter bg-indigo-50 border-b-2 border-indigo-500">
-      <td class="px-6 py-2"><%= season.close_losses %></td>
-      <td class="px-6 py-2"><%= season.year %></td>
-      <td class="px-6 py-2"><%= season.member.full_name %></td>
+      <td class="px-2 py-2"><%= season.close_losses %></td>
+      <td class="px-2 py-2"><%= season.year %></td>
+      <td class="px-2 py-2"><%= season.member.full_name %></td>
     </tr>
   <% end %>
 </table>
