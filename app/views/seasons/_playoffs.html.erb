@@ -1,0 +1,25 @@
+<div class="typewriter home-header text-xl py-4">
+  <span class="underline-blue">Playoffs</span>
+</div>
+
+<% @playoff_games_by_week.each do |week_number, games| %>
+  <span class="typewriter italic">
+    <%= "Week #{week_number}" %>
+  </span>
+  <table class="table mb-6 shadow">
+    <thead class="typewriter bg-gray-500 text-white border-b-4 border-gray-700">
+      <th class="px-2 py-3">Home</th>
+      <th class="px-2 py-3">Home Score</th>
+      <th class="px-2 py-3">Away Score</th>
+      <th class="px-2 py-3">Away</th>
+    </thead>
+    <% games.each do |game| %>
+      <tr class="typewriter bg-indigo-50 border-b-2 border-indigo-500">
+        <td class="px-2 py-2"><%= Member.find(game.home_id).full_name %></td>
+        <td class="px-2 py-2"><%= game.home_score %></td>
+        <td class="px-2 py-2"><%= game.away_score %></td>
+        <td class="px-2 py-2"><%= Member.find(game.away_id).full_name %></td>
+      </tr>
+    <% end %>
+  </table>
+<% end %>
