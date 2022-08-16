@@ -1,35 +1,39 @@
-<table class="table mb-6 shadow">
-  <thead class="thead-dark typewriter bg-gray-300 border-b-2 border-gray-500">
-    <th class="px-2 py-2 text-xs text-gray-800">W's</th>
-    <th class="px-2 py-2 text-xs text-gray-800">L's</th>
-    <th class="px-3 py-2 text-xs text-gray-800">Win %</th>
-    <th class="px-3 py-2 text-xs text-gray-800">Avg Score</th>
-    <th class="px-3 py-2 text-xs text-gray-800">Avg Opp Score</th>
-  </thead>
+<turbo-frame id="games_table">
+  <div>
+    <table class="table mb-6 shadow">
+      <thead class="thead-dark typewriter bg-gray-300 border-b-2 border-gray-500">
+        <th class="px-2 py-2 text-xs text-gray-800">W's</th>
+        <th class="px-2 py-2 text-xs text-gray-800">L's</th>
+        <th class="px-3 py-2 text-xs text-gray-800">Win %</th>
+        <th class="px-3 py-2 text-xs text-gray-800">Avg Score</th>
+        <th class="px-3 py-2 text-xs text-gray-800">Avg Opp Score</th>
+      </thead>
 
-  <tr class="typewriter bg-gray-50">
-    <td class="px-2 py-2"><%= @avg_data.wins %></td>
-    <td class="px-2 py-2"><%= @avg_data.losses %></td>
-    <td class="px-3 py-2"><%= @avg_data.win_loss %></td>
-    <td class="px-3 py-2"><%= @avg_data.avg_score %></td>
-    <td class="px-3 py-2"><%= @avg_data.avg_opponent_score %></td>
-  </tr>
-</table>
+      <tr class="typewriter bg-gray-50">
+        <td class="px-2 py-2"><%= @avg_data.wins %></td>
+        <td class="px-2 py-2"><%= @avg_data.losses %></td>
+        <td class="px-3 py-2"><%= @avg_data.win_loss %></td>
+        <td class="px-3 py-2"><%= @avg_data.avg_score %></td>
+        <td class="px-3 py-2"><%= @avg_data.avg_opponent_score %></td>
+      </tr>
+    </table>
 
-<table class="table typewriter border-collapse shadow mb-10">
-  <thead class="bg-gray-300 border-b-2 border-gray-500">
-    <th class="px-4 py-2 text-xs text-gray-800">Year</th>
-    <th class="px-2 py-2 text-xs text-gray-800">W</th>
-    <th class="px-1 py-2 text-xs text-gray-800">Me</th>
-    <th class="px-1 py-2 text-xs text-gray-800" colspan="2">Opponent</th>
-  </thead>
-  <% @games.each do |game| %>
-    <tr class="typewriter p-2 <%= game.win_or_loss(@member) == "Win" ? "bg-green-50 border-b-2 border-green-200" : "bg-red-50 border-b-2 border-red-200" %>">
-      <td class="px-4 py-2"><%= game.week.season.year %></td>
-      <td class="px-2 py-2"><%= game.styled_week_number %></td>
-      <td class="px-1 py-2"><%= game.my_score(@member) %></td>
-      <td class="px-1 py-2"><%= game.opponent_score(@member) %></td>
-      <td class="px-1 py-2"><%= game.opponent(@member) %>
-    </tr>
-  <% end %>
-</table>
+    <table class="table typewriter border-collapse shadow mb-10">
+      <thead class="bg-gray-300 border-b-2 border-gray-500">
+        <th class="px-4 py-2 text-xs text-gray-800">Year</th>
+        <th class="px-2 py-2 text-xs text-gray-800">W</th>
+        <th class="px-1 py-2 text-xs text-gray-800">Me</th>
+        <th class="px-1 py-2 text-xs text-gray-800" colspan="2">Opponent</th>
+      </thead>
+      <% @games.each do |game| %>
+        <tr class="typewriter p-2 <%= game.win_or_loss(@member) == "Win" ? "bg-green-50 border-b-2 border-green-200" : "bg-red-50 border-b-2 border-red-200" %>">
+          <td class="px-4 py-2"><%= game.week.season.year %></td>
+          <td class="px-2 py-2"><%= game.styled_week_number %></td>
+          <td class="px-1 py-2"><%= game.my_score(@member) %></td>
+          <td class="px-1 py-2"><%= game.opponent_score(@member) %></td>
+          <td class="px-1 py-2"><%= game.opponent(@member) %>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+</turbo-frame>

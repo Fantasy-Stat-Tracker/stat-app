@@ -5,17 +5,21 @@ class GamesController < ApplicationController
   def member_games
     @member = current_member
     games_constant = Game.where(home_id: @member.id)
-      .or(Game.where(away_id: @member.id))
-      .custom_filter(params.slice(:year), @member)
+                         .or(Game.where(away_id: @member.id))
+                         .custom_filter(params.slice(:year), @member)
     @games = Game.where(home_id: @member.id)
-      .or(Game.where(away_id: @member.id))
-      .custom_filter(params.slice(:year, :week_number, :opposing_player, :game_type), @member)
-      .order(year: :desc)
-      .order(:week_number)
+                 .or(Game.where(away_id: @member.id))
+                 .custom_filter(params.slice(:year, :week_number, :opposing_player, :game_type), @member)
+                 .order(year: :desc)
+                 .order(:week_number)
     win_loss_filter if params[:win_loss]
     @available_weeks = games_constant.distinct.pluck(:week_number)
     @game_opponents = opponent_builder(games_constant)
     @avg_data = AverageGameData.new(@games, @member)
+    @form_path = root_path
+    if turbo_frame_request?
+      render partial: "shared/games_table"
+    end
   end
 
   private

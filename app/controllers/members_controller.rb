@@ -20,6 +20,10 @@ class MembersController < ApplicationController
     @available_weeks = games_constant.distinct.pluck(:week_number)
     @game_opponents = opponent_builder(games_constant, @member)
     @avg_data = AverageGameData.new(@games, @member)
+    @form_path = league_member_path(@league_id)
+    if turbo_frame_request?
+      render partial: "shared/games_table"
+    end
   end
 
   def new
