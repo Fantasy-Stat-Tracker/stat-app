@@ -15,7 +15,7 @@ class MembersController < ApplicationController
     @game_opponents = opponent_builder(@games_constant, @member)
     @wins = @games.where(winner_id: @member.id).size
     @losses = @games.where(loser_id: @member.id).size
-    @win_loss = (@wins.to_f / (@wins.to_f + @losses.to_f)).round(4)
+    @win_loss = ((@wins.to_f / (@wins.to_f + @losses.to_f)) * 100).round(2)
     @avg_score = avg_score(@games, @member).to_f.round(2)
     @avg_opponent_score = opponent_avg_score(@games, @member).to_f.round(2)
   end

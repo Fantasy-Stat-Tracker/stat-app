@@ -73,6 +73,10 @@ class Game < ApplicationRecord
     game_type == "Playoffs" ? "*#{week.number}" : "#{week.number}"
   end
 
+  def year_with_playoff_designation
+    game_type == "Playoffs" ? "*#{year}" : "#{year}"
+  end
+
   private
 
   def set_winner

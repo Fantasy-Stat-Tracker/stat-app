@@ -4,10 +4,10 @@
 
 <table class="table my-6 shadow typewriter">
   <thead class="bg-gray-500 text-white border-b-4 border-gray-700">
-    <th class="px-6 py-3">Name</th>
+    <th class="px-2 py-3">Name</th>
     <th class="px-2 py-3">W's</th>
     <th class="px-2 py-3">L's</th>
-    <th class="px-3 py-3">Win%</th>
+    <th class="px-2 py-3">Win%</th>
     <th class="px-2 py-3">PPG</th>
   </thead>
   <% @members.each do |member| %>
@@ -18,10 +18,10 @@
       data-clickable-tr-url-value="<%= league_member_url(@league_id, member.id) %>"
       data-action="click->clickable-tr#follow"
     >
-      <td class="px-6 py-2"><%= member.full_name %></td>
+      <td class="px-2 py-2"><%= member.full_name %></td>
       <td class="px-2 py-2"><%= member.winning_games.count %></td>
       <td class="px-2 py-2"><%= member.losing_games.count %></td>
-      <td class="px-3 py-2"><%= member.win_percentage %></td>
+      <td class="px-2 py-2"><%= member.win_percentage %></td>
       <td class="px-2 py-2"><%= member.ppg %></td>
     </tr>
   <% end %>
