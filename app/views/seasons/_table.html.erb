@@ -1,5 +1,5 @@
-<table class="table mb-6 shadow">
-  <thead class="typewriter bg-gray-500 text-white border-b-4 border-gray-700">
+<table class="mb-6 shadow">
+  <thead class="bg-gray-500 text-white border-b-4 border-gray-700">
     <th class="px-4 py-3">Player</th>
     <th class="px-2 py-3">W's</th>
     <th class="px-2 py-3">L's</th>
@@ -8,9 +8,9 @@
   </thead>
   <% @member_seasons.each do |member_season| %>
     <% if member_season.is_winner == true %>
-      <tr class="typewriter bg-amber-300 border-b-2 border-indigo-500">
+      <tr class="bg-amber-300 border-b-2 border-indigo-500">
     <% else %>
-      <tr class="typewriter bg-indigo-50 border-b-2 border-indigo-500">
+      <tr class="bg-indigo-50 border-b-2 border-indigo-500">
     <% end %>
       <td class="px-4 py-2"><%= member_season.member.full_name %></td>
       <td class="px-2 py-2"><%= member_season.wins %></td>

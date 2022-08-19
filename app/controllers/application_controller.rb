@@ -19,7 +19,7 @@ class ApplicationController < ActionController::Base
 
   def require_user
     unless current_user
-      redirect_to login_path
+      redirect_to :root
     end
   end
 end

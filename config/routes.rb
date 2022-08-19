@@ -2,11 +2,11 @@ Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-  root 'games#member_games'
-  
+  root 'home#index'
+
   resources :league do
     resources :members
-
+    resources :games, only: [:index]
     get "/recordbook/game" => 'recordbook#game_index'
     get "/recordbook/game/espn" => 'recordbook#game_espn'
     get "/recordbook/game/fleaflicker" => 'recordbook#game_fleaflicker'

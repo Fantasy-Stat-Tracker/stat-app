@@ -1,7 +1,7 @@
-<div class="typewriter home-header text-3xl px-4 py-4">
+<div class="home-header text-3xl px-4 py-4">
   <span class="underline-blue">Wins</span>
 </div>
-<table class="table mb-6 shadow">
+<table class="mb-6 shadow">
   <thead>
     <tr>
       <th class="border-b-4 border-gray-700"></th>
@@ -9,17 +9,17 @@
     </tr>
   </thead>
   <% @wins.each do |value| %>
-    <tr class="typewriter bg-indigo-50 border-b-2 border-indigo-500">
+    <tr class="bg-indigo-50 border-b-2 border-indigo-500">
       <td class="px-3 py-2"><%= value[1] %></td>
       <td class="px-3 py-2"><%= Member.find(value[0]).full_name %></td>
     </tr>
   <% end %>
 </table>
 
-<div class="typewriter home-header text-3xl px-4 py-4">
+<div class="home-header text-3xl px-4 py-4">
   <span class="underline-blue">Losses</span>
 </div>
-<table class="table mb-6 shadow">
+<table class="mb-6 shadow">
   <thead>
     <tr>
       <th class="border-b-4 border-gray-700"></th>
@@ -27,17 +27,17 @@
     </tr>
   </thead>
   <% @losses.each do |value| %>
-    <tr class="typewriter bg-indigo-50 border-b-2 border-indigo-500">
+    <tr class="bg-indigo-50 border-b-2 border-indigo-500">
       <td class="px-3 py-2"><%= value[1] %></td>
       <td class="px-3 py-2"><%= Member.find(value[0]).full_name %></td>
     </tr>
   <% end %>
 </table>
 
-<div class="typewriter home-header text-3xl px-4 py-4">
+<div class="home-header text-3xl px-4 py-4">
   <span class="underline-blue">Points</span>
 </div>
-<table class="table mb-6 shadow">
+<table class="mb-6 shadow">
   <thead>
     <tr>
       <th class="border-b-4 border-gray-700"></th>
@@ -45,17 +45,17 @@
     </tr>
   </thead>
   <% @points.each do |value| %>
-    <tr class="typewriter bg-indigo-50 border-b-2 border-indigo-500">
+    <tr class="bg-indigo-50 border-b-2 border-indigo-500">
       <td class="px-3 py-2"><%= value[1] %></td>
       <td class="px-3 py-2"><%= Member.find(value[0]).full_name %></td>
     </tr>
   <% end %>
 </table>
 
-<div class="typewriter home-header text-3xl px-4 py-4">
+<div class="home-header text-3xl px-4 py-4">
   <span class="underline-blue">Playoff Wins</span>
 </div>
-<table class="table mb-6 shadow">
+<table class="mb-6 shadow">
   <thead>
     <tr>
       <th class="border-b-4 border-gray-700"></th>
@@ -63,17 +63,17 @@
     </tr>
   </thead>
   <% @playoff_wins.each do |value| %>
-    <tr class="typewriter bg-indigo-50 border-b-2 border-indigo-500">
+    <tr class="bg-indigo-50 border-b-2 border-indigo-500">
       <td class="px-3 py-2"><%= value[1] %></td>
       <td class="px-3 py-2"><%= Member.find(value[0]).full_name %></td>
     </tr>
   <% end %>
 </table>
 
-<div class="typewriter home-header text-3xl px-4 py-4">
+<div class="home-header text-3xl px-4 py-4">
   <span class="underline-blue">Playoff Losses</span>
 </div>
-<table class="table mb-6 shadow">
+<table class="mb-6 shadow">
   <thead>
     <tr>
       <th class="border-b-4 border-gray-700"></th>
@@ -81,7 +81,7 @@
     </tr>
   </thead>
   <% @playoff_losses.each do |value| %>
-    <tr class="typewriter bg-indigo-50 border-b-2 border-indigo-500">
+    <tr class="bg-indigo-50 border-b-2 border-indigo-500">
       <td class="px-3 py-2"><%= value[1] %></td>
       <td class="px-3 py-2"><%= Member.find(value[0]).full_name %></td>
     </tr>
