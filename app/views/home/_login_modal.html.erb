@@ -1,15 +1,23 @@
 <input type="checkbox" id="login-modal" class="modal-toggle" />
-<div class="modal modal-bottom sm:modal-middle">
+<div class="modal modal-bottom bg-gray-100 sm:modal-middle">
   <div class="modal-box">
-    <label for="login-modal" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+    <label for="login-modal" class="btn btn-md btn-circle absolute right-2 top-2">X</label>
     <div class="text-xl px-4 py-4">
       <%= simple_form_for :session, :url => login_path, html: {class: "px-8 pt-6 pb-8 mb-4"} do |f| %>
         <%= f.input :email,
-                    input_html: {class: "shadow appearance-none border rounded w-full py-2 px-3 mb-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline max-w-md"},
-                    label_html: {class: "block text-white text-sm font-bold mb-2"} %>
+                    input_html: {
+                      class: "shadow appearance-none border rounded w-full py-2 px-3 mb-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline max-w-md"
+                    },
+                    placeholder: "Email",
+                    label_html: {class: "hidden"}
+        %>
         <%= f.input :password,
-                    input_html: {class: "shadow appearance-none border rounded w-full py-2 px-3 mb-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline max-w-md"},
-                    label_html: {class: "block text-white text-sm font-bold mb-2"} %>
+                    input_html: {
+                      class: "shadow appearance-none border rounded w-full py-2 px-3 mb-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline max-w-md"
+                    },
+                    placeholder: "Password",
+                    label_html: {class: "hidden"}
+        %>
         <%= f.button :submit, "Log In!", class: "bg-gray-500 hover:bg-gray-400 text-white font-bold py-2 px-4 border-b-4 border-gray-700 hover:border-gray-500 rounded mt-2" %>
       <% end %>
     </div>
