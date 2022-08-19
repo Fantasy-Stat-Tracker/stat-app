@@ -3,7 +3,7 @@
   champagne and losers... well let's face it, losers are not
   allowed in here. Enjoy!
 </p>
-<table class="table mb-6 shadow">
+<table class="mb-6 shadow">
   <thead class="bg-gray-500">
     <tr>
       <th class="px-6 py-2 text-3xl" colspan="3">&#x1F3C6 &#x1F3C6 &#x1F3C6 &#x1F3C6 &#x1F3C6</th>
@@ -11,7 +11,7 @@
   </thead>
   <% @champ_seasons.each do |member_id, champion_seasons| %>
     <tbody>
-      <tr class="typewriter bg-indigo-50 border-b-2 border-indigo-500">
+      <tr class="bg-indigo-50 border-b-2 border-indigo-500">
         <td class="px-6 py-2">
           <%= Member.find(member_id).full_name %>
         </td>

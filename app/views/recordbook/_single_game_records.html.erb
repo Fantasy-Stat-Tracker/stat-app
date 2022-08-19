@@ -1,15 +1,15 @@
-<div class="typewriter home-header text-3xl px-4 py-4">
+<div class="home-header text-3xl px-4 py-4">
   <span class="underline-blue">Single Game Score</span>
 </div>
-<table class="table mb-6 shadow">
-  <thead class="typewriter bg-gray-500 text-white border-b-4 border-gray-700">
+<table class="mb-6 shadow">
+  <thead class="bg-gray-500 text-white border-b-4 border-gray-700">
     <th class="px-2 py-3">Score</th>
     <th class="px-2 py-3">Player</th>
     <th class="px-2 py-3">Year</th>
     <th class="px-2 py-3">Week</th>
   </thead>
   <% @single_game_high.each do |game| %>
-    <tr class="typewriter bg-indigo-50 border-b-2 border-indigo-500">
+    <tr class="bg-indigo-50 border-b-2 border-indigo-500">
       <td class="px-2 py-2"><%= game[0] %></td>
       <td class="px-2 py-2"><%= Member.find(game[1]).full_name%>
       <td class="px-2 py-2"><%= game[2] %></td>
@@ -18,18 +18,18 @@
   <% end %>
 </table>
 
-<div class="typewriter home-header text-3xl px-4 py-4">
+<div class="home-header text-3xl px-4 py-4">
   <span class="underline-blue">Lowest Single Game Score</span>
 </div>
-<table class="table mb-6 shadow">
-  <thead class="typewriter bg-gray-500 text-white border-b-4 border-gray-700">
+<table class="mb-6 shadow">
+  <thead class="bg-gray-500 text-white border-b-4 border-gray-700">
     <th class="px-2 py-3">Score</th>
     <th class="px-2 py-3">Player</th>
     <th class="px-2 py-3">Year</th>
     <th class="px-2 py-3">Week</th>
   </thead>
   <% @single_game_low.each do |game| %>
-    <tr class="typewriter bg-indigo-50 border-b-2 border-indigo-500">
+    <tr class="bg-indigo-50 border-b-2 border-indigo-500">
       <td class="px-2 py-2"><%= game[0] %></td>
       <td class="px-2 py-2"><%= Member.find(game[1]).full_name%>
       <td class="px-2 py-2"><%= game[2] %></td>
@@ -38,24 +38,24 @@
   <% end %>
 </table>
 
-<div class="typewriter home-header text-3xl px-4 py-4">
+<div class="home-header text-3xl px-4 py-4">
   <span class="underline-blue">Combined Scores</span>
 </div>
-<table class="table mb-6 shadow">
-  <thead class="typewriter bg-gray-500 text-white border-b-4 border-gray-700">
+<table class="mb-6 shadow">
+  <thead class="bg-gray-500 text-white border-b-4 border-gray-700">
     <th class="px-2 py-3">Total</th>
     <th class="px-1 py-3">Year</th>
     <th class="px-1 py-3">Home</th>
     <th class="px-1 py-3">Away</th>
   </thead>
   <% @game_highscore.each do |game| %>
-    <tr class="typewriter bg-indigo-50">
+    <tr class="bg-indigo-50">
       <td class="px-2 py-2"></td>
       <td class="px-1 py-2"></td>
       <td class="px-1 py-2"><%= Member.find(game.home_id).short_name %></td>
       <td class="px-1 py-2"><%= Member.find(game.away_id).short_name %>
     </tr>
-    <tr class="typewriter bg-indigo-50 border-b-2 border-indigo-500">
+    <tr class="bg-indigo-50 border-b-2 border-indigo-500">
       <td class="px-2 py-2"><%= game.total_score %></td>
       <td class="px-1 py-2"><%= game.year_with_playoff_designation %></td>
       <td class="px-1 py-2"><%= game.home_score %></td>
@@ -64,24 +64,24 @@
   <% end %>
 </table>
 
-<div class="typewriter home-header text-3xl px-4 py-4">
+<div class="home-header text-3xl px-4 py-4">
   <span class="underline-blue">Lowest Combined Scores</span>
 </div>
-<table class="table mb-6 shadow">
-  <thead class="typewriter bg-gray-500 text-white border-b-4 border-gray-700">
+<table class="mb-6 shadow">
+  <thead class="bg-gray-500 text-white border-b-4 border-gray-700">
     <th class="px-2 py-3">Total</th>
     <th class="px-1 py-3">Year</th>
     <th class="px-1 py-3">Home</th>
     <th class="px-1 py-3">Away</th>
   </thead>
   <% @game_lowscore.each do |game| %>
-    <tr class="typewriter bg-indigo-50">
+    <tr class="bg-indigo-50">
       <td class="px-2 py-2"></td>
       <td class="px-1 py-2"></td>
       <td class="px-1 pt-2"><%= Member.find(game.home_id).short_name %></td>
       <td class="px-1 pt-2"><%= Member.find(game.away_id).short_name %>
     </tr>
-    <tr class="typewriter bg-indigo-50 border-b-2 border-indigo-500">
+    <tr class="bg-indigo-50 border-b-2 border-indigo-500">
       <td class="px-2 py-2"><%= game.total_score %></td>
       <td class="px-1 py-2"><%= game.year_with_playoff_designation %></td>
       <td class="px-1 py-2"><%= game.home_score %></td>

@@ -2,7 +2,7 @@ class GamesController < ApplicationController
   before_action :require_user
   before_action :set_current_league
 
-  def member_games
+  def index
     @member = current_member
     games_constant = Game.where(home_id: @member.id)
                          .or(Game.where(away_id: @member.id))
@@ -16,7 +16,7 @@ class GamesController < ApplicationController
     @available_weeks = games_constant.distinct.pluck(:week_number)
     @game_opponents = opponent_builder(games_constant)
     @avg_data = AverageGameData.new(@games, @member)
-    @form_path = root_path
+    @form_path = league_games_path(@league_id)
     if turbo_frame_request?
       render partial: "shared/games_table"
     end
