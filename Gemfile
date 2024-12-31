@@ -2,14 +2,14 @@ source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 gem 'dotenv-rails', groups: [:development, :test]
 
-ruby '3.1.0'
+ruby '3.3.6'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 7.0'
+gem 'rails', '~> 8.0'
 # Use postgresql as the database for Active Record
 gem 'pg', '>= 0.18', '< 2.0'
 # Use Puma as the app server
-gem 'puma', '~> 5.6'
+gem 'puma'
 # Use SCSS for stylesheets
 gem 'sass-rails'
 # javascript
@@ -31,15 +31,14 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'jquery-rails'
 gem 'pry'
 gem 'simple_form'
-gem 'google-api-client', github: 'googleapis/google-api-ruby-client'
+# gem 'google-api-client', github: 'googleapis/google-api-ruby-client'
 gem 'awesome_print'
 gem 'hirb'
 gem 'httparty'
 gem 'sendgrid-ruby'
-gem 'rails_admin'
 gem 'turbo-rails'
 # Reduces boot times through caching; required in config/boot.rb
-gem 'bootsnap', '>= 1.1.0', require: false
+gem 'bootsnap', require: false
 
 # Ruby 3.1.0 fix
 gem 'net-smtp', require: false
