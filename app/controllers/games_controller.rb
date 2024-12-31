@@ -1,37 +1,48 @@
 class GamesController < ApplicationController
   before_action :require_user
   before_action :set_current_league
+  before_action :set_member
 
   def index
-    @member = current_member
-    games_constant = Game.where(home_id: @member.id)
-                         .or(Game.where(away_id: @member.id))
-                         .custom_filter(params.slice(:year), @member)
     @games = Game.where(home_id: @member.id)
                  .or(Game.where(away_id: @member.id))
                  .custom_filter(params.slice(:year, :week_number, :opposing_player, :game_type), @member)
                  .order(year: :desc)
                  .order(:week_number)
     win_loss_filter if params[:win_loss]
-    @available_weeks = games_constant.distinct.pluck(:week_number)
-    @game_opponents = opponent_builder(games_constant)
+    build_form_helpers(params)
     @avg_data = AverageGameData.new(@games, @member)
     @form_path = league_games_path(@league_id)
-    if turbo_frame_request?
-      render partial: "shared/games_table"
-    end
+    render partial: 'shared/games_table' if turbo_frame_request?
   end
 
   private
 
+  def set_member
+    @member = current_member
+  end
+
   def win_loss_filter
-    if params[:win_loss] == "Win"
+    if params[:win_loss] == 'Win'
       @games = @games.where(winner_id: params[:viewed_member])
-    elsif params[:win_loss] == "Loss"
+    elsif params[:win_loss] == 'Loss'
       @games = @games.where(loser_id: params[:viewed_member])
     else
       @games
     end
+  end
+
+  def build_form_helpers(params)
+    available_games = Game.where(home_id: @member.id)
+                          .or(Game.where(away_id: @member.id))
+                          .custom_filter(params.slice(:year), @member)
+
+    @available_weeks = available_weeks(available_games)
+    @game_opponents = opponent_builder(available_games)
+  end
+
+  def available_weeks(games)
+    games.distinct.pluck(:week_number)
   end
 
   def opponent_builder(games)
