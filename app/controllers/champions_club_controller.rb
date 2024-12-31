@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# This controls the Champions Club page
 class ChampionsClubController < ApplicationController
   before_action :require_user
   before_action :set_current_league
