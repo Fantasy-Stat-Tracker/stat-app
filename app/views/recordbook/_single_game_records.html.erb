@@ -51,15 +51,15 @@
   <% @game_highscore.each do |game| %>
     <tr class="bg-indigo-50">
       <td class="px-2 py-2"></td>
-      <td class="px-1 py-2"></td>
-      <td class="px-1 py-2"><%= Member.find(game.home_id).short_name %></td>
-      <td class="px-1 py-2"><%= Member.find(game.away_id).short_name %>
+      <td class="px-2 py-2"></td>
+      <td class="px-2 py-2"><%= Member.find(game.home_id).short_name %></td>
+      <td class="px-2 py-2"><%= Member.find(game.away_id).short_name %>
     </tr>
     <tr class="bg-indigo-50 border-b-2 border-indigo-500">
-      <td class="px-2 py-2"><%= game.total_score %></td>
-      <td class="px-1 py-2"><%= game.year_with_playoff_designation %></td>
-      <td class="px-1 py-2"><%= game.home_score %></td>
-      <td class="px-1 py-2"><%= game.away_score %></td>
+      <td class="px-2 py-2"><%= game.total_score.round(1) %></td>
+      <td class="px-2 py-2"><%= game.year_with_playoff_designation %></td>
+      <td class="px-2 py-2"><%= game.home_score %></td>
+      <td class="px-2 py-2"><%= game.away_score %></td>
     </tr>
   <% end %>
 </table>
@@ -77,15 +77,15 @@
   <% @game_lowscore.each do |game| %>
     <tr class="bg-indigo-50">
       <td class="px-2 py-2"></td>
-      <td class="px-1 py-2"></td>
-      <td class="px-1 pt-2"><%= Member.find(game.home_id).short_name %></td>
-      <td class="px-1 pt-2"><%= Member.find(game.away_id).short_name %>
+      <td class="px-2 py-2"></td>
+      <td class="px-2 pt-2"><%= Member.find(game.home_id).short_name %></td>
+      <td class="px-2 pt-2"><%= Member.find(game.away_id).short_name %>
     </tr>
     <tr class="bg-indigo-50 border-b-2 border-indigo-500">
-      <td class="px-2 py-2"><%= game.total_score %></td>
-      <td class="px-1 py-2"><%= game.year_with_playoff_designation %></td>
-      <td class="px-1 py-2"><%= game.home_score %></td>
-      <td class="px-1 py-2"><%= game.away_score %></td>
+      <td class="px-2 py-2"><%= game.total_score.round(1) %></td>
+      <td class="px-2 py-2"><%= game.year_with_playoff_designation %></td>
+      <td class="px-2 py-2"><%= game.home_score %></td>
+      <td class="px-2 py-2"><%= game.away_score %></td>
     </tr>
   <% end %>
 </table>
