@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+if ! pg_isready --quiet; then
+  sudo service postgresql start
+fi
+
+if ! redis-cli ping 2>/dev/null | grep -Fqx PONG; then
+  sudo service redis-server start
+fi
