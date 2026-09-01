@@ -1,0 +1,32 @@
+@import "tailwindcss";
+@plugin "daisyui";
+
+/*
+  The default border color has changed to `currentcolor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+  }
+}
+
+.underline-blue {
+  font-weight: 700;
+  --tw-text-opacity: 1;
+  color: rgba(0, 0, 0, var(--tw-text-opacity));
+  text-decoration: none;
+  background-image: linear-gradient(
+    180deg,
+    transparent 70%,
+    rgba(62, 115, 229, 0.4) 0
+  );
+}

@@ -6,20 +6,18 @@ ruby '3.3.6'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 8.0'
+# Use Sprockets for the asset pipeline
+gem 'sprockets-rails'
 # Use postgresql as the database for Active Record
 gem 'pg', '>= 0.18', '< 2.0'
 # Use Puma as the app server
 gem 'puma'
-# Use SCSS for stylesheets
-gem 'sass-rails'
 # javascript
 gem 'jsbundling-rails'
-# css bundling
-gem 'cssbundling-rails'
 # stimulus
 gem 'stimulus-rails'
 # styling
-gem "tailwindcss-rails"
+gem "tailwindcss-rails", "~> 4.0"
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
