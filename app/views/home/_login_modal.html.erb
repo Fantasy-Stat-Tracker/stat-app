@@ -6,14 +6,14 @@
       <%= simple_form_for :session, :url => login_path, html: {class: "px-8 pt-6 pb-8 mb-4"} do |f| %>
         <%= f.input :email,
                     input_html: {
-                      class: "shadow appearance-none border rounded w-full py-2 px-3 mb-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline max-w-md"
+                      class: "shadow-sm appearance-none border rounded w-full py-2 px-3 mb-3 text-gray-700 leading-tight focus:outline-hidden focus:shadow-outline max-w-md"
                     },
                     placeholder: "Email",
                     label_html: {class: "hidden"}
         %>
         <%= f.input :password,
                     input_html: {
-                      class: "shadow appearance-none border rounded w-full py-2 px-3 mb-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline max-w-md"
+                      class: "shadow-sm appearance-none border rounded w-full py-2 px-3 mb-3 text-gray-700 leading-tight focus:outline-hidden focus:shadow-outline max-w-md"
                     },
                     placeholder: "Password",
                     label_html: {class: "hidden"}
