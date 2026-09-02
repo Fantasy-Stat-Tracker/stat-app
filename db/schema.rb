@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2024_12_31_195429) do
+ActiveRecord::Schema[8.0].define(version: 2026_09_02_120000) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
   enable_extension "pg_stat_statements"
@@ -120,6 +120,16 @@ ActiveRecord::Schema[8.0].define(version: 2024_12_31_195429) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "league_id"
+    t.string "league_name"
+    t.integer "team_count"
+    t.string "scoring_type"
+    t.integer "regular_season_matchup_count"
+    t.integer "playoff_team_count"
+    t.integer "playoff_matchup_period_length"
+    t.string "playoff_seeding_rule"
+    t.string "playoff_matchup_tie_rule"
+    t.jsonb "scoring_settings", default: {}, null: false
+    t.jsonb "matchup_periods", default: {}, null: false
     t.index ["league_id"], name: "index_seasons_on_league_id"
   end
 
