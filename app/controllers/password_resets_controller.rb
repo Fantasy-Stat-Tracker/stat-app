@@ -6,7 +6,7 @@ class PasswordResetsController < ApplicationController
     user = User.find_by_email(params[:email])
     user.send_password_reset if user
     flash[:notice] = 'E-mail sent with password reset instructions.'
-    redirect_to root, notice: "E-mail sent with password reset instructions."
+    redirect_to root_path, notice: "E-mail sent with password reset instructions."
   end
 
   def edit
@@ -20,7 +20,7 @@ class PasswordResetsController < ApplicationController
       redirect_to new_password_reset_path
     elsif @user.update(user_params)
       flash[:notice] = 'Password has been reset!'
-      redirect_to root
+      redirect_to root_path
     else
       render :edit
     end
@@ -29,6 +29,6 @@ class PasswordResetsController < ApplicationController
   private
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:password)
+      params.require(:user).permit(:password, :password_confirmation)
     end
 end
