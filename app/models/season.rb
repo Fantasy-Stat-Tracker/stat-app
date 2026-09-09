@@ -39,8 +39,11 @@ class Season < ApplicationRecord
   end
 
   def previous_round_games(game)
-    winner_game = self.games.find_by(winner_id: game.winner_id, week_id: game.week_id - 1)
-    loser_game = self.games.find_by(winner_id: game.loser_id, week_id: game.week_id - 1)
+    previous_week = self.weeks.find_by(number: game.week.number - 1)
+    return [] unless previous_week
+
+    winner_game = self.games.find_by(winner_id: game.winner_id, week_id: previous_week.id)
+    loser_game = self.games.find_by(winner_id: game.loser_id, week_id: previous_week.id)
 
     [winner_game, loser_game].compact
   end
