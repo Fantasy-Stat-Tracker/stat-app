@@ -1,9 +1,10 @@
 class EspnSyncService
   attr_reader :espn_s2, :swid, :league_id, :season_year
 
-  def initialize(league:, season_year:)
+  def initialize(league:, season_year:, http_client: HTTParty)
     @league = league
     @season_year = season_year
+    @http_client = http_client
   end
 
   def call
@@ -20,25 +21,28 @@ class EspnSyncService
   private
 
   def fetch_players_response
-    cookie = "espnAuth={\"swid\":\"#{@league.swid}\"}; espn_s2=#{@league.espn_s2};"
-
-    HTTParty.get(
-      "https://lm-api-reads.fantasy.espn.com/apis/v3/games/ffl/seasons/#{@season_year}/segments/0/leagues/#{@league.espn_league_id}?view=mTeam",
-      headers: {
-        "Cookie": cookie,
-      }
-    )
+    fetch_response('mTeam')
   end
 
   def fetch_games_response
-    cookie = "espnAuth={\"swid\":\"#{@league.swid}\"}; espn_s2=#{@league.espn_s2};"
+    fetch_response('mMatchup')
+  end
 
-    HTTParty.get(
-      "https://lm-api-reads.fantasy.espn.com/apis/v3/games/ffl/seasons/#{@season_year}/segments/0/leagues/#{@league.espn_league_id}?view=mMatchup",
-      headers: {
-        "Cookie": cookie,
-      },
-    )
+  def fetch_response(view)
+    response = @http_client.get(endpoint(view), headers: { "Cookie": cookie })
+    @season_year < 2018 ? response.first : response
+  end
+
+  def endpoint(view)
+    if @season_year < 2018
+      "https://lm-api-reads.fantasy.espn.com/apis/v3/games/ffl/leagueHistory/#{@league.espn_league_id}?seasonId=#{@season_year}&view=#{view}"
+    else
+      "https://lm-api-reads.fantasy.espn.com/apis/v3/games/ffl/seasons/#{@season_year}/segments/0/leagues/#{@league.espn_league_id}?view=#{view}"
+    end
+  end
+
+  def cookie
+    "espnAuth={\"swid\":\"#{@league.swid}\"}; espn_s2=#{@league.espn_s2};"
   end
 
   def create_or_find_season
@@ -46,15 +50,19 @@ class EspnSyncService
   end
 
   def process_players(players_response, year_season)
+    year_season.member_seasons.update_all(is_winner: false)
+
     players_response['teams'].each do |player|
       member = find_or_map_member(player['primaryOwner'])
       next unless member
 
-      MemberSeason.find_or_create_by(
+      member_season = MemberSeason.find_or_initialize_by(
         season_id: year_season.id,
         member_id: member.id,
         espn_team_id: player['id']
       )
+      member_season.is_winner = player['rankCalculatedFinal'] == 1
+      member_season.save!
     end
   end
 
