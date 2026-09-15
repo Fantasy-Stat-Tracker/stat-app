@@ -10,10 +10,12 @@
     <%= stylesheet_link_tag "tailwind", "data-turbo-track": "reload" %>
   </head>
 
-  <body class="bg-gradient-to-r from-gray-50 via-gray-50 to-blue-100 text-black pb-10">
+  <body class="bg-gradient-to-r from-gray-50 via-gray-50 to-blue-100 font-sans text-black pb-10">
     <%= render partial: "shared/navbar" %>
+    <%= render partial: "shared/flash" %>
     <main class="mx-auto mt-12 px-5">
         <%= yield %>
     </main>
+    <%= render partial: "shared/login_modal" unless current_user %>
   </body>
 </html>

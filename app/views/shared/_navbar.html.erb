@@ -1,5 +1,7 @@
 <% if current_member %>
   <%= render partial: "shared/logged_in_navbar" %>
+<% elsif current_user %>
+  <%= render partial: "shared/account_navbar" %>
 <% else %>
   <%= render partial: "shared/logged_out_navbar" %>
 <% end %>

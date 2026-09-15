@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2026_09_02_120000) do
+ActiveRecord::Schema[8.0].define(version: 2026_09_09_120000) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
   enable_extension "pg_stat_statements"
@@ -142,6 +142,7 @@ ActiveRecord::Schema[8.0].define(version: 2026_09_02_120000) do
     t.datetime "reset_password_sent_at", precision: nil
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
+    t.index "lower((email)::text)", name: "index_users_on_lower_email", unique: true
   end
 
   create_table "weeks", force: :cascade do |t|

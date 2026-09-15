@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception, prepend: true
-  helper_method :current_member
+  helper_method :current_user, :current_member
 
   private
 

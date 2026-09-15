@@ -12,6 +12,9 @@ Rails.application.configure do
   # Show full error reports.
   config.consider_all_requests_local = true
 
+  # Allow Amp orb preview portals while retaining host authorization elsewhere.
+  config.hosts << /.*\.onamp\.dev/
+
   # Enable server timing.
   config.server_timing = true
 
