@@ -3,12 +3,17 @@ class SessionsController < ApplicationController
   end
 
   def create
-    @user = User.find_by(email: params[:session][:email])
+    email = params[:session][:email].to_s.strip.downcase
+    @user = User.find_by("LOWER(email) = ?", email)
     if @user && @user.authenticate(params[:session][:password])
       session[:user_id] = @user.id
-      flash[:success] = "Welcome, #{@user.first_name}."
-      set_current_league
-      redirect_to league_games_url(@league_id)
+      flash[:success] = @user.first_name.present? ? "Welcome, #{@user.first_name}." : "Welcome back!"
+      if current_member
+        set_current_league
+        redirect_to league_games_url(@league_id)
+      else
+        redirect_to users_path
+      end
     else
       flash[:danger] = "Incorrect credentials. Please try again."
       redirect_to :root

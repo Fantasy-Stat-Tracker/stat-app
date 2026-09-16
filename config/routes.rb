@@ -3,6 +3,10 @@ Rails.application.routes.draw do
 
   root 'home#index'
 
+  get "/signup" => 'users#new', as: :signup
+  post "/signup" => 'users#create'
+  resources :users, only: [:index]
+
   resources :league do
     resources :members
     resources :games, only: [:index]

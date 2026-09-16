@@ -12,8 +12,10 @@
 
   <body class="bg-gradient-to-r from-gray-50 via-gray-50 to-blue-100 font-sans">
     <%= render partial: "shared/navbar" %>
+    <%= render partial: "shared/flash" %>
     <main class="mx-auto">
         <%= yield %>
     </main>
+    <%= render partial: "shared/login_modal" unless current_user %>
   </body>
 </html>
