@@ -1,29 +1,30 @@
 <input type="checkbox" id="login-modal" class="modal-toggle" />
-<div class="modal modal-bottom bg-gray-100 sm:modal-middle">
-  <div class="modal-box">
+<div class="modal modal-bottom bg-black/10 backdrop-blur-sm sm:modal-middle">
+  <div class="modal-box bg-[rgba(62,115,229,0.4)]">
     <label for="login-modal" class="btn btn-md btn-circle absolute right-2 top-2 cursor-pointer">X</label>
     <div class="text-xl px-4 py-4">
       <%= simple_form_for :session, :url => login_path, html: {class: "px-8 pt-6 pb-8 mb-4"} do |f| %>
         <%= f.input :email,
                     input_html: {
-                      class: "shadow-sm appearance-none border rounded w-full py-2 px-3 mb-3 text-gray-700 leading-tight focus:outline-hidden focus:shadow-outline max-w-md"
+                      class: "shadow-sm appearance-none border rounded w-full bg-white py-2 px-3 mb-3 text-gray-700 leading-tight focus:outline-hidden focus:shadow-outline max-w-md"
                     },
                     placeholder: "Email",
                     label_html: {class: "hidden"}
         %>
         <%= f.input :password,
                     input_html: {
-                      class: "shadow-sm appearance-none border rounded w-full py-2 px-3 mb-3 text-gray-700 leading-tight focus:outline-hidden focus:shadow-outline max-w-md"
+                      class: "shadow-sm appearance-none border rounded w-full bg-white py-2 px-3 mb-3 text-gray-700 leading-tight focus:outline-hidden focus:shadow-outline max-w-md"
                     },
                     placeholder: "Password",
                     label_html: {class: "hidden"}
         %>
         <%= f.button :submit, "Log In!", class: "bg-gray-500 hover:bg-gray-400 text-white font-bold py-2 px-4 border-b-4 border-gray-700 hover:border-gray-500 rounded mt-2" %>
+        <p class="mt-4 mb-4 text-sm">
+          <%= link_to new_password_reset_path, class: "inline-flex gap-1" do %>
+            <span>Forgot</span> <span>password?</span>
+          <% end %>
+        </p>
       <% end %>
-    </div>
-
-    <div class="forgot-pass">
-      <p><%= link_to 'Forgot password?', new_password_reset_path %></p>
     </div>
   </div>
 </div>
