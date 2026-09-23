@@ -1,4 +1,6 @@
-<% if current_member %>
+<% if current_user && controller_name == "users" %>
+  <%= render partial: "shared/account_navbar" %>
+<% elsif current_member %>
   <%= render partial: "shared/logged_in_navbar" %>
 <% elsif current_user %>
   <%= render partial: "shared/account_navbar" %>

@@ -1,1 +1,46 @@
-<%# Future user dashboard. %>
+<section class="mx-auto max-w-5xl font-[Arial,sans-serif]">
+  <div class="flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:justify-between">
+    <h1 class="text-3xl font-bold">Your leagues</h1>
+
+    <%= link_to "Add League", new_league_path, class: "shrink-0 rounded border-b-4 border-gray-700 bg-gray-500 px-4 py-2 font-bold text-white hover:border-gray-500 hover:bg-gray-400" %>
+  </div>
+
+  <div class="mt-8 overflow-hidden rounded-lg border border-gray-200 bg-white shadow-sm">
+    <% if @members.any? %>
+      <div class="overflow-x-auto">
+        <table class="w-full text-left">
+          <thead class="border-b-2 border-gray-500 bg-gray-300 text-sm text-gray-800">
+            <tr>
+              <th scope="col" class="px-6 py-3 font-semibold">League</th>
+              <th scope="col" class="px-6 py-3 font-semibold">Platform</th>
+              <th scope="col" class="hidden px-6 py-3 font-semibold sm:table-cell">Started</th>
+              <th scope="col" class="hidden px-6 py-3 text-right font-semibold sm:table-cell">Members</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-gray-200">
+            <% @members.each do |member| %>
+              <% league = member.league %>
+              <tr
+                class="cursor-pointer hover:bg-gray-50"
+                data-controller="clickable-tr"
+                data-clickable-tr-target="clickable-row"
+                data-clickable-tr-url-value="<%= league_member_url(league, member) %>"
+                data-action="click->clickable-tr#follow"
+              >
+                <td class="px-6 py-4 font-semibold"><%= league.name.presence || "League #{league.id}" %></td>
+                <td class="px-6 py-4 text-gray-600"><%= league.source.present? ? league.source.titleize : "—" %></td>
+                <td class="hidden px-6 py-4 text-gray-600 sm:table-cell"><%= league.start_year || "—" %></td>
+                <td class="hidden px-6 py-4 text-right text-gray-600 sm:table-cell"><%= league.active_members_count || league.members.size %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    <% else %>
+      <div class="px-6 py-16 text-center">
+        <h2 class="text-lg font-semibold">No leagues yet</h2>
+        <p class="mt-1 text-gray-600">Add your first league to get started.</p>
+      </div>
+    <% end %>
+  </div>
+</section>
