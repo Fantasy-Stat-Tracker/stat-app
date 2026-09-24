@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   has_secure_password
   has_many :members
+  has_many :leagues, through: :members
   before_validation :normalize_email
 
   validates :email,

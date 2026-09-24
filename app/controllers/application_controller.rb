@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
   end
 
   def set_current_league
-    @league_id = current_member.league.id
+    @league_id = params[:league_id] || current_member.league.id
   end
 
   def require_user

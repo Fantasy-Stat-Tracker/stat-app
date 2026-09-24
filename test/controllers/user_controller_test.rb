@@ -30,8 +30,39 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
     assert_select "[role='status']", text: /Your account has been created/
     assert_select "a", text: "Logout"
-    assert_select "main", text: ""
+    assert_select "h1", "Your leagues"
+    assert_select "a[href='#{new_league_path}']", "Add League"
+    assert_select "h2", "No leagues yet"
     assert_equal "new.user@example.com", User.order(:created_at).last.email
+  end
+
+  test "shows the signed-in user's leagues" do
+    user = User.create!(email: "dashboard@example.com", password: "password123")
+    league = League.create!(
+      name: "Sunday Legends",
+      source: "espn",
+      start_year: 2018,
+      active_members_count: 12
+    )
+    member = league.members.create!(user: user, email: user.email)
+    League.create!(name: "Someone Else's League")
+
+    post login_path, params: {
+      session: { email: user.email, password: "password123" }
+    }
+    get users_path
+
+    assert_response :success
+    assert_select "h1", "Your leagues"
+    assert_select "main", text: /View and manage your fantasy leagues/, count: 0
+    assert_select "a[href='#{new_league_path}']", "Add League"
+    assert_select "tbody tr[data-action='click->clickable-tr#follow'][data-clickable-tr-url-value='#{league_member_url(league, member)}']", count: 1 do
+      assert_select "td", "Sunday Legends"
+      assert_select "td", "Espn"
+      assert_select "td", "2018"
+      assert_select "td", "12"
+    end
+    assert_select "main", text: /Someone Else's League/, count: 0
   end
 
   test "requires an account to view the user index" do

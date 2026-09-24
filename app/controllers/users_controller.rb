@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   before_action :require_user, only: [:index]
 
   def index
+    @members = current_user.members.includes(league: :members).joins(:league).order("leagues.name")
   end
 
   def new
